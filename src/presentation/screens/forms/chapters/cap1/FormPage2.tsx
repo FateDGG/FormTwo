@@ -135,9 +135,11 @@ export const FormPage2 = () => {
                 />
                   <ErrorMessage errors={errors} touched={touched} fieldName="P12"/>
 
+
                 <View style={globalStyles.buttonsBanner}>
                   <Prevcomponent onPrevPressed={() => navigation.navigate('page1' as never)}/>
-                  <NextComponent onNextPress={() => navigation.navigate('page3' as never)} />
+                  <NextComponent onNextPress={() => navigation.navigate('page1' as never)} />
+                  {/* <NextComponent onNextPress={handleSubmit} /> */}
                 </View>
               </View>
             )}
