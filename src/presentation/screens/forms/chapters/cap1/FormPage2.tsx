@@ -111,7 +111,7 @@ export const FormPage2 = () => {
                 <DropDownComponent
                   values={values.P10.response[0].responseuser}
                   setFieldValue={(value) => setFieldValue('P10.response[0].responseuser[0]', value)}
-                  qTitle='P10. ¿Nos autoriza a realizarle la encuesta?'
+                  qTitle='P10. ¿Nos autoriza a realizarle esta encuesta?'
                   opValues={['Si', 'No',]}
                 />
                   <ErrorMessage errors={errors} touched={touched} fieldName="P10"/>
@@ -119,32 +119,25 @@ export const FormPage2 = () => {
                 <DropDownComponent
                   values={values.P11.response[0].responseuser}
                   setFieldValue={(value) => setFieldValue('P11.response[0].responseuser[0]', value)}
-                  qTitle='P11. Señale su rango de edad'
-                  opValues={['Entre 18 a 25 años', 'Entre 26 a 35 años', 'Entre 36 a 45 años',
-                    'Entre 46 a 55 años', 'Mayor de 56 años']}
+                  qTitle='P11. En que rango de edad se encuentra?'
+                  opValues={['Entre 18 y 25 años', 'Entre 26 y 35 años', 'Entre 36 y 45 años',
+                    'Entre 46 y 55 años', 'Mayor de 56 años']}
                 />
                   <ErrorMessage errors={errors} touched={touched} fieldName="P11"/>
+
                 <DropDownComponent
                   values={values.P12.response[0].responseuser}
                   setFieldValue={(value) => setFieldValue('P12.response[0].responseuser[0]', value)}
-                  qTitle='P12. De acuerdo con su cultura, pueblo o rasgos físicos... usted se reconoce como:'
-                  opValues={['Indígena', 'Gitano / ROM', 'Raizal del archipiélago de San Andrés y Providencia',
-                    'Palenquero de San Basilio', 'Negro, mulato, afrodescendiente o afrocolombiano',
-                    'Ninguno de los anteriores']}
-                />
-                  <ErrorMessage errors={errors} touched={touched} fieldName="P12"/>
-                <DropDownComponent
-                  values={values.P13.response[0].responseuser}
-                  setFieldValue={(value) => setFieldValue('P13.response[0].responseuser[0]', value)}
-                  qTitle='P13. ¿Cuál es su nivel educativo más alto alcanzado?'
+                  qTitle='P12. ¿Cuál es su nivel educativo más alto alcanzado?'
                   opValues={['Ninguno', 'Preescolar', 'Básica primaria (1-5)',
-                    'Básica secundaria (6-9)', 'Media (10-13)', 'Técnico', 'Profesional',
+                    'Básica secundaria (6-9)', 'Media (10-13)', 'Técnico', 'Tecnólogo', 'Profesional',
                     'Especialista', 'Magister', 'Doctorado', 'No sabe / No informa']}
                 />
-                  <ErrorMessage errors={errors} touched={touched} fieldName="P13"/>
+                  <ErrorMessage errors={errors} touched={touched} fieldName="P12"/>
+
                 <View style={globalStyles.buttonsBanner}>
                   <Prevcomponent onPrevPressed={() => navigation.navigate('page1' as never)}/>
-                  <NextComponent onNextPress={handleSubmit} />
+                  <NextComponent onNextPress={() => navigation.navigate('page3' as never)} />
                 </View>
               </View>
             )}
