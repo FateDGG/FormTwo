@@ -57,7 +57,7 @@ export const DoubleDropdownInput = ({
             <TextInput
               value={selectedSubcategory}
               onChangeText={(text) => onSubcategoryChange(text)}
-              placeholder="Ingrese texto aquí"
+              placeholder="Especifica tu respuesta"
               style={globalStyles.input} // Asegúrate de definir estilos para `textInput`
             />
             {errors?.subcategory && touched?.subcategory && (

@@ -86,7 +86,7 @@ export const DoubleDropdownSubcat = ({
             <View style={globalStyles.picker}>
               <TextInput
                 onChangeText={onTextChange}
-                placeholder="Ingrese texto aquí"
+                placeholder="Especifica tu respuesta"
                 style={globalStyles.input} // Asegúrate de definir estilos para `textInput`
               />
             </View>
