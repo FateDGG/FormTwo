@@ -83,5 +83,10 @@ export const globalStyles = StyleSheet.create({
         backgroundColor: 'rgba(75, 251, 247, 0.37)',
         marginBottom: 10,
     },
+    checkboxContainer: {
+        flexDirection: 'row',   // Para que el CheckBox y el texto estén en fila
+        alignItems: 'center',   // Centra el checkbox verticalmente con el texto
+        marginVertical: 10,     // Espaciado vertical entre checkboxes
+      },
 }
 )

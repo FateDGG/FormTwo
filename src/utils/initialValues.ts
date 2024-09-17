@@ -42,6 +42,24 @@ export const getInitialValuesPage3 = () => {
         P13: initialResponses("P13","1","","13"),
         P14: initialResponses("P14","1","","14"),
         P15: initialResponses("P8","1","","15"),
-        P16: initialResponses("P8","1","","16"),
+
     }
+
+    
+}
+
+export const getInitialValuesPage4 = () => {
+    return {
+        P16a: initialResponses("P8","1","","16"),
+        P16b: initialResponses("P8","1","","16"),
+        P16c: initialResponses("P8","1","","16"),
+        P16d: initialResponses("P8","1","","16"),
+        P16e: initialResponses("P8","1","","16"),
+        P16f: initialResponses("P8","1","","16"),
+        P16g: initialResponses("P8","1","","16"),
+        P16h: initialResponses("P8","1","","16"),
+        P17: initialResponses("P8","1","","17"),
+    }
+
+    
 }

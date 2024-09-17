@@ -93,7 +93,7 @@ export const FormPage3 = () => {
 
             <View style={globalStyles.buttonsBanner}>
                 <Prevcomponent onPrevPressed={() => navigation.navigate('page2' as never)}/>
-                <NextComponent onNextPress={() => navigation.navigate('page1' as never)} />
+                <NextComponent onNextPress={() => navigation.navigate('page4' as never)} />
             </View> 
 
         </ScrollView>
