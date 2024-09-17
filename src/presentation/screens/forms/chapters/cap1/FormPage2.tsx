@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { View, Text, Button, Alert, KeyboardAvoidingView, Platform } from 'react-native';
 import { Formik, FormikHelpers } from 'formik';
 import { DoubleDropdown } from '../../../../components/shared/DoubleDropComponent';
+import { DoubleDropdownInput } from '../../../../components/shared/DropDownInputComponent';
 import { Prevcomponent } from '../../../../components/shared/PrevComponent';
 import { NextComponent } from '../../../../components/shared/NextComponent';
 import { globalStyles } from '../../../../theme/theme';
@@ -79,9 +80,9 @@ export const FormPage2 = () => {
                   values={values.P8.response[0].responseuser}
                 />
                   <ErrorMessage errors={errors} touched={touched} fieldName="P8"/>
-
+{/* 
                 <DoubleDropdown
-                categoryTitle="P9. ¿Qué tipo de actor / operador de justicia usted representa?"
+                categoryTitle="P9. ¿Qué Rol desempeña dentro de su comunidad??"
                 subcategoryTitle="Seleccione una subcategoría:"
                 categories={categories}
                 subcategories={subcategories}
@@ -91,7 +92,19 @@ export const FormPage2 = () => {
                 onSubcategoryChange={(value) => setFieldValue('P9.response[0].responseuser[0]', value)}
                 errors={errors.P9?.response?.[0]}
                 touched={touched.P9?.response?.[0]}
+                /> */}
+                <DoubleDropdownInput
+                  categoryTitle="P9. ¿Qué Rol desempeña dentro de su comunidad?"
+                  subcategoryTitle="Ingrese una subcategoría:"
+                  categories={categories}  // Asegúrate de definir `categories` como un array de objetos { label: string, value: string }
+                  selectedCategory={values.P9.response[0].idoptresponse}
+                  selectedSubcategory={values.P9.response[0].responseuser[0]}
+                  onCategoryChange={(value) => setFieldValue('P9.response[0].idoptresponse', value)}
+                  onSubcategoryChange={(value) => setFieldValue('P9.response[0].responseuser[0]', value)}
+                  errors={errors.P9?.response?.[0]}
+                  touched={touched.P9?.response?.[0]}
                 />
+
                   <ErrorIdMessage errors={errors} touched={touched} fieldName="P9"/>
                   <ErrorMessage errors={errors} touched={touched} fieldName="P9"/>
 
