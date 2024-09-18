@@ -15,12 +15,21 @@ import { getInitialValuesPage3, getInitialValuesPage4 } from '../../../../../uti
 import { ErrorMessage } from '../../../../components/shared/ErrorComponent';
 import { DropDownComponent } from '../../../../components/shared/DropDownComponent';
 import { DoubleDropdownInput } from '../../../../components/shared/DropDownInputComponent';
-import { subcategories16a } from '../../../../../utils/cap1/categoriesp16a';
+import { subcategories16a } from '../../../../../utils/cap1/categoriesp16';
+import { subcategories16b } from '../../../../../utils/cap1/categoriesp16';
+import { subcategories16c } from '../../../../../utils/cap1/categoriesp16';
+import { subcategories16d } from '../../../../../utils/cap1/categoriesp16';
+import { subcategories16e } from '../../../../../utils/cap1/categoriesp16';
+import { subcategories16f } from '../../../../../utils/cap1/categoriesp16';
+import { subcategories16g } from '../../../../../utils/cap1/categoriesp16';
+import { subcategories16h } from '../../../../../utils/cap1/categoriesp16';
 import { DoubleDropdownSubcat } from '../../../../components/shared/DoubleDropdownSubcat';
 
 export interface FormValues{
     P16a:FormTemplate
-    P17:FormTemplate
+    P16b:FormTemplate
+    P16c:FormTemplate
+    P16d:FormTemplate
 }
 
 
@@ -61,8 +70,8 @@ export const FormPage4 = () => {
 
 
                         <DoubleDropdownSubcat
-                        questionTitle="P16.1 Culturales y linguísticas"
-                        subcategoryTitle="Seleccione las subcategorías:"
+                        questionTitle="P16.1. Culturales y linguísticas"
+                        subcategoryTitle="Seleccione lo que aplica"
                         subcategories={subcategories16a}  // Cambia esta lista según la pregunta
                         selectedCategory={values.P16a.response[0].idoptresponse}
                         selectedSubcategories={values.P16a.response[0].responseuser || []}
@@ -72,37 +81,49 @@ export const FormPage4 = () => {
                         errors={errors.P16a?.response?.[0]}
                         touched={touched.P16a?.response?.[0]}
                         />
-
-                        {/* <DropDownComponent
-                        values={values.P13.response[0].responseuser}
-                        setFieldValue={(value) => setFieldValue('P13.response[0].responseuser[0]', value)}
-                        qTitle='P13. De acuerdo con su cultura, pueblo o rasgos físicos... ¿cuál de las siguientes categorías enmarca su comunidad?:'
-                        opValues={['Indígena', 'Gitano / ROM', 'Raizal del archipiélago de San Andrés y Providencia',
-                            'Palenquero de San Basilio', 'Negro, mulato, afrodescendiente o afrocolombiano',
-                            'Ninguno de los anteriores']}
-                        />
-                            <ErrorMessage errors={errors} touched={touched} fieldName="P13"/>
-
-                        <DoubleDropdownInput
-                        categoryTitle="P14. ¿Cual es el tamaño de su comunidad?"
-                        subcategoryTitle="Ingrese una subcategoría:"
-                        categories={categories}  // Asegúrate de definir `categories` como un array de objetos { label: string, value: string }
-                        selectedCategory={values.P14.response[0].idoptresponse}
-                        selectedSubcategory={values.P14.response[0].responseuser[0]}
-                        onCategoryChange={(value) => setFieldValue('P14.response[0].idoptresponse', value)}
-                        onSubcategoryChange={(value) => setFieldValue('P14.response[0].responseuser[0]', value)}
-                        errors={errors.P14?.response?.[0]}
-                        touched={touched.P14?.response?.[0]}
-                        />
-                            <ErrorMessage errors={errors} touched={touched} fieldName="P14" />
-                        <DropDownComponent
-                        values={values.P15.response[0].responseuser}
-                        setFieldValue={(value) => setFieldValue('P15.response[0].responseuser[0]', value)}
-                        qTitle='P15. ¿La comunidad a la que usted pertenece es?'
-                        opValues={['Urbana', 'Rural', 'Ambas']}
-                        />
-                            <ErrorMessage errors={errors} touched={touched} fieldName="P15"/> */}
+                            <ErrorMessage errors={errors} touched={touched} fieldName="P16a"/>
                         
+                        <DoubleDropdownSubcat
+                        questionTitle="P16.2. De género"
+                        subcategoryTitle="Seleccione lo que aplica"
+                        subcategories={subcategories16b}  // Cambia esta lista según la pregunta
+                        selectedCategory={values.P16b.response[0].idoptresponse}
+                        selectedSubcategories={values.P16b.response[0].responseuser || []}
+                        onCategoryChange={(value) => setFieldValue('P16b.response[0].idoptresponse', value)}
+                        onSubcategoryChange={(value) => setFieldValue('P16b.response[0].responseuser', value)}
+                        onTextChange={(text) => setFieldValue('P16b.response[0].additionalText', text)} // Manejamos el texto del input
+                        errors={errors.P16b?.response?.[0]}
+                        touched={touched.P16b?.response?.[0]}
+                        />
+                            <ErrorMessage errors={errors} touched={touched} fieldName="P16b"/>
+                            
+                        <DoubleDropdownSubcat
+                        questionTitle="P16.3. De seguridad, orden público o asociadas al conflicto armado"
+                        subcategoryTitle="Seleccione lo que aplica"
+                        subcategories={subcategories16c}  // Cambia esta lista según la pregunta
+                        selectedCategory={values.P16c.response[0].idoptresponse}
+                        selectedSubcategories={values.P16c.response[0].responseuser || []}
+                        onCategoryChange={(value) => setFieldValue('P16c.response[0].idoptresponse', value)}
+                        onSubcategoryChange={(value) => setFieldValue('P16c.response[0].responseuser', value)}
+                        onTextChange={(text) => setFieldValue('P16c.response[0].additionalText', text)} // Manejamos el texto del input
+                        errors={errors.P16b?.response?.[0]}
+                        touched={touched.P16b?.response?.[0]}
+                        />
+                            <ErrorMessage errors={errors} touched={touched} fieldName="P16c"/>
+                        
+                        <DoubleDropdownSubcat
+                        questionTitle="P16.4. Discapacidad"
+                        subcategoryTitle="Seleccione lo que aplica"
+                        subcategories={subcategories16d}  // Cambia esta lista según la pregunta
+                        selectedCategory={values.P16d.response[0].idoptresponse}
+                        selectedSubcategories={values.P16d.response[0].responseuser || []}
+                        onCategoryChange={(value) => setFieldValue('P16d.response[0].idoptresponse', value)}
+                        onSubcategoryChange={(value) => setFieldValue('P16d.response[0].responseuser', value)}
+                        onTextChange={(text) => setFieldValue('P16c.response[0].additionalText', text)} // Manejamos el texto del input
+                        errors={errors.P16d?.response?.[0]}
+                        touched={touched.P16d?.response?.[0]}
+                        />
+                            <ErrorMessage errors={errors} touched={touched} fieldName="P16c"/>
 
                     </View>
                 )}
