@@ -1,69 +1,93 @@
 import React from 'react';
-import { View, Text, TextInput } from 'react-native';
+import { View, Text } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import CheckBox from '@react-native-community/checkbox';
 import { globalStyles } from '../../theme/theme';
 
-interface DoubleDropdownMultiQuestionProps {
-  categoryTitle: string;
+interface DropDownMultiQuestionProps {
+  questionTitle: string;
   subcategoryTitle: string;
-  categories: { label: string; value: string }[];
+  subcategories: { label: string; value: string }[];
   selectedCategory: string;
-  selectedSubcategory: string;
+  selectedSubcategories: string[];
   onCategoryChange: (value: string) => void;
-  onSubcategoryChange: (value: string) => void;
+  onSubcategoryChange: (values: string[]) => void;
+  onSubQuestionChange: (index: number, subcategoryValue: string, value: string) => void;
+  selectedSubQuestions: { [key: string]: string[] }; // Clave por valor de subcategoría
   errors?: any;
   touched?: any;
 }
 
 export const DropDownMultiQuestion = ({
-  categoryTitle,
+  questionTitle,
   subcategoryTitle,
-  categories,
+  subcategories,
   selectedCategory,
-  selectedSubcategory,
+  selectedSubcategories,
   onCategoryChange,
   onSubcategoryChange,
+  onSubQuestionChange,
+  selectedSubQuestions,
   errors,
   touched,
-}: DoubleDropdownMultiQuestionProps) => {
-  const specificCategoryValue = '61'; // Cambia esto al valor específico que deseas
+}: DropDownMultiQuestionProps) => {
+  
+  const handleCheckboxChange = (value: string) => {
+    const newSelectedSubcategories = selectedSubcategories.includes(value)
+      ? selectedSubcategories.filter(item => item !== value)
+      : [...selectedSubcategories, value];
+
+    onSubcategoryChange(newSelectedSubcategories);
+  };
 
   return (
     <View>
-      <Text style={globalStyles.questionTitle}>{categoryTitle}</Text>
+      <Text style={globalStyles.questionTitle}>{questionTitle}</Text>
       <View style={globalStyles.picker}>
         <Picker
           selectedValue={selectedCategory}
-          onValueChange={(value) => {
-            onCategoryChange(value);
-            if (value !== specificCategoryValue) {
-              onSubcategoryChange(''); // Reset text input when category changes and is not specificCategoryValue
-            }
-          }}
+          onValueChange={(value) => onCategoryChange(value)}
         >
           <Picker.Item label="Seleccione una opción" value="" />
-          {categories.map((category) => (
-            <Picker.Item key={category.value} label={category.label} value={category.value} />
-          ))}
+          <Picker.Item label="Sí" value="yes" />
+          <Picker.Item label="No" value="no" />
         </Picker>
-        {errors?.category && touched?.category && (
-          <Text style={{ color: 'red' }}>{errors.category}</Text>
-        )}
       </View>
-      {selectedCategory === specificCategoryValue && (
+      {errors?.category && touched?.category && <Text style={{ color: 'red' }}>{errors.category}</Text>}
+
+      {selectedCategory === 'yes' && (
         <>
           <Text style={globalStyles.questionTitle}>{subcategoryTitle}</Text>
-          <View style={globalStyles.picker}>
-            <TextInput
-              value={selectedSubcategory}
-              onChangeText={(text) => onSubcategoryChange(text)}
-              placeholder="Especifica tu respuesta"
-              style={globalStyles.input} // Asegúrate de definir estilos para `textInput`
-            />
-            {errors?.subcategory && touched?.subcategory && (
-              <Text style={{ color: 'red' }}>{errors.subcategory}</Text>
-            )}
-          </View>
+          {subcategories.map((subcategory) => (
+            <View key={subcategory.value} style={globalStyles.checkboxContainer}>
+              <CheckBox
+                value={selectedSubcategories.includes(subcategory.value)}
+                onValueChange={() => handleCheckboxChange(subcategory.value)}
+              />
+              <Text>{subcategory.label}</Text>
+            </View>
+          ))}
+          {errors?.subcategory && touched?.subcategory && <Text style={{ color: 'red' }}>{errors.subcategory}</Text>}
+
+          {subcategories.map((subcategory) => (
+            selectedSubcategories.includes(subcategory.value) && (
+              <View key={subcategory.value}>
+                <Text style={globalStyles.questionTitle}>Subpreguntas para {subcategory.label}</Text>
+                {Array.from({ length: 3 }, (_, index) => (
+                  <View key={index}>
+                    <Picker
+                      selectedValue={selectedSubQuestions[subcategory.value]?.[index] || ''}
+                      onValueChange={(value: string) => onSubQuestionChange(index, subcategory.value, value)}
+                    >
+                      <Picker.Item label={`Seleccione una opción para ${subcategory.label} - Pregunta ${index + 1}`} value="" />
+                      <Picker.Item label="Opción 1" value="option1" />
+                      <Picker.Item label="Opción 2" value="option2" />
+                    </Picker>
+                  </View>
+                ))}
+              </View>
+            )
+          ))}
         </>
       )}
     </View>

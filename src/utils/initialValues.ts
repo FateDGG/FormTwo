@@ -10,6 +10,10 @@ const initialResponses = (id: string, chapter: string, qFather: string, idOptRes
         {
             idoptresponse: idOptResponse,
             responseuser: [""],
+            subQuestion3Responses: undefined,
+            subQuestion1Responses: undefined,
+            subQuestion2Responses: undefined,
+            subQuestions: []
         }
     ]
 });
@@ -66,15 +70,8 @@ export const getInitialValuesPage4 = () => {
 
 export const getInitialValuesPage6 = () => {
     return {
-        P16a: initialResponses("P8","1","","16"),
-        P16b: initialResponses("P8","1","","16"),
-        P16c: initialResponses("P8","1","","16"),
-        P16d: initialResponses("P8","1","","16"),
-        P16e: initialResponses("P8","1","","16"),
-        P16f: initialResponses("P8","1","","16"),
-        P16g: initialResponses("P8","1","","16"),
-        P16h: initialResponses("P8","1","","16"),
-        P17: initialResponses("P8","1","","17"),
+        P18: initialResponses("P8","1","","18"),
+        
     }
 
 }

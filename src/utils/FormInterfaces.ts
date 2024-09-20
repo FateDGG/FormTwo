@@ -1,4 +1,8 @@
 export interface Response{
+    subQuestions: string[];
+    subQuestion3Responses: any;
+    subQuestion1Responses: any;
+    subQuestion2Responses: any;
     idoptresponse: string,
     responseuser: string[],
 }
