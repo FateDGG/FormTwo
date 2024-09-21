@@ -7,6 +7,8 @@ import { FormPage3 } from '../screens/forms/chapters/cap2/FormPage3';
 import { FormPage4 } from '../screens/forms/chapters/cap3/FormPage4';
 import { FormPage5 } from '../screens/forms/chapters/cap3/FormPage5';
 import { FormPage6 } from '../screens/forms/chapters/cap5/FormPage6';
+import { FormPage7 } from '../screens/forms/chapters/cap5/FormPage7';
+import { FormPage8 } from '../screens/forms/chapters/cap5/FormPage8';
 const Stack = createStackNavigator();
 
 export const AppNavigator = () => {
@@ -25,6 +27,8 @@ export const AppNavigator = () => {
       <Stack.Screen name="page4" component={FormPage4} />
       <Stack.Screen name="page5" component={FormPage5} />
       <Stack.Screen name="page6" component={FormPage6} />
+      <Stack.Screen name="page7" component={FormPage7} />
+      <Stack.Screen name="page8" component={FormPage8} />
     </Stack.Navigator>
   );
 }

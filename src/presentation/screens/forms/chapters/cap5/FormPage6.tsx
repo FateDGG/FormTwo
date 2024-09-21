@@ -13,10 +13,14 @@ import { fileName } from '../../../../../utils/generateFilename';
 import { getInitialValuesPage6 } from '../../../../../utils/initialValues';
 import { ErrorMessage } from '../../../../components/shared/ErrorComponent';
 import { DropDownMultiQuestion } from '../../../../components/shared/DropDownMultiQuestion';
-import { subcategories18a } from '../../../../../utils/cap1/categoriesp18';
+import { subcategories18a, subcategories18b, subcategories18c, subcategories18d, subcategories18e } from '../../../../../utils/cap1/categoriesp18';
 
 export interface FormValues {
     P18a: FormTemplate;
+    P18b: FormTemplate;
+    P18c: FormTemplate;
+    P18d: FormTemplate;
+    P18e: FormTemplate;
 }
 
 export const FormPage6 = () => {
@@ -70,15 +74,95 @@ export const FormPage6 = () => {
                                 errors={errors.P18a?.response?.[0]}
                                 touched={touched.P18a?.response?.[0]}
                             />
-
                             <ErrorMessage errors={errors} touched={touched} fieldName="P18a" />
+
+                            <DropDownMultiQuestion
+                                questionTitle="P18.2. Problemas relacionados con el consumo de un producto, bien o servicio (telefonía celular, televisión por cable, internet, transporte, alimentos, electrodomésticos y servicios técnicos o profesionales). Se excluyen los servicios públicos domiciliarios.  "
+                                subcategoryTitle="P19.2. ¿Cuáles de las siguientes tipologías de problemas afectan con mayor frecuencia a los miembros de su comunidad? "
+                                subcategories={subcategories18b}  // Lista de subcategorías
+                                selectedCategory={values.P18b.response[0].idoptresponse}
+                                selectedSubcategories={values.P18b.response[0].responseuser || []}
+                                onCategoryChange={(value) => setFieldValue('P18b.response[0].idoptresponse', value)}
+                                onSubcategoryChange={(value) => setFieldValue('P18b.response[0].responseuser', value)}
+                                onSubQuestionChange={(index, subcategoryValue, value) => {
+                                    const updatedResponses = { ...values.P18b.response[0].subQuestion1Responses };
+                                    updatedResponses[subcategoryValue] = updatedResponses[subcategoryValue] || [];
+                                    updatedResponses[subcategoryValue][index] = value;
+                                    setFieldValue('P18b.response[0].subQuestion1Responses', updatedResponses);
+                                }}
+                                selectedSubQuestions={values.P18b.response[0].subQuestion1Responses || {}} // Inicializa con respuestas vacías
+                                errors={errors.P18b?.response?.[0]}
+                                touched={touched.P18b?.response?.[0]}
+                            />
+                            <ErrorMessage errors={errors} touched={touched} fieldName="P18b" />
+
+                            <DropDownMultiQuestion
+                                questionTitle="P18.3. Problemas relacionados con la prestación de un servicio público domiciliario como agua, luz, gas, alcantarillado o basuras. "
+                                subcategoryTitle="P19.3. ¿Cuáles de las siguientes tipologías de problemas afectan con mayor frecuencia a los miembros de su comunidad? "
+                                subcategories={subcategories18c}  // Lista de subcategorías
+                                selectedCategory={values.P18c.response[0].idoptresponse}
+                                selectedSubcategories={values.P18c.response[0].responseuser || []}
+                                onCategoryChange={(value) => setFieldValue('P18c.response[0].idoptresponse', value)}
+                                onSubcategoryChange={(value) => setFieldValue('P18c.response[0].responseuser', value)}
+                                onSubQuestionChange={(index, subcategoryValue, value) => {
+                                    const updatedResponses = { ...values.P18c.response[0].subQuestion1Responses };
+                                    updatedResponses[subcategoryValue] = updatedResponses[subcategoryValue] || [];
+                                    updatedResponses[subcategoryValue][index] = value;
+                                    setFieldValue('P18c.response[0].subQuestion1Responses', updatedResponses);
+                                }}
+                                selectedSubQuestions={values.P18c.response[0].subQuestion1Responses || {}} // Inicializa con respuestas vacías
+                                errors={errors.P18c?.response?.[0]}
+                                touched={touched.P18c?.response?.[0]}
+                            />
+                            <ErrorMessage errors={errors} touched={touched} fieldName="P18c" />
+
+                            <DropDownMultiQuestion
+                                questionTitle="P18.4. Problemas relacionados con su trabajo o empleo, como falta de pago de salarios, reconocimiento o formalización de la relación laboral, cambio en las condiciones laborales, despido, acoso.  "
+                                subcategoryTitle="P19.4. ¿Cuáles de las siguientes tipologías de problemas afectan con mayor frecuencia a los miembros de su comunidad? "
+                                subcategories={subcategories18d}  // Lista de subcategorías
+                                selectedCategory={values.P18d.response[0].idoptresponse}
+                                selectedSubcategories={values.P18d.response[0].responseuser || []}
+                                onCategoryChange={(value) => setFieldValue('P18d.response[0].idoptresponse', value)}
+                                onSubcategoryChange={(value) => setFieldValue('P18d.response[0].responseuser', value)}
+                                onSubQuestionChange={(index, subcategoryValue, value) => {
+                                    const updatedResponses = { ...values.P18d.response[0].subQuestion1Responses };
+                                    updatedResponses[subcategoryValue] = updatedResponses[subcategoryValue] || [];
+                                    updatedResponses[subcategoryValue][index] = value;
+                                    setFieldValue('P18a.response[0].subQuestion1Responses', updatedResponses);
+                                }}
+                                selectedSubQuestions={values.P18d.response[0].subQuestion1Responses || {}} // Inicializa con respuestas vacías
+                                errors={errors.P18d?.response?.[0]}
+                                touched={touched.P18d?.response?.[0]}
+                            />
+                            <ErrorMessage errors={errors} touched={touched} fieldName="P18d" />
+
+                            <DropDownMultiQuestion
+                                questionTitle="P18.5. Problemas relacionados con deudas contraídas con el sector financiero, solidario o particulares, respecto a intereses elevados, hipotecas, embargos, quiebras, reportes a centrales de riesgo, deudas educativas.  "
+                                subcategoryTitle="P19.5. ¿Cuáles de las siguientes tipologías de problemas afectan con mayor frecuencia a los miembros de su comunidad? "
+                                subcategories={subcategories18e}  // Lista de subcategorías
+                                selectedCategory={values.P18e.response[0].idoptresponse}
+                                selectedSubcategories={values.P18e.response[0].responseuser || []}
+                                onCategoryChange={(value) => setFieldValue('P18e.response[0].idoptresponse', value)}
+                                onSubcategoryChange={(value) => setFieldValue('P18e.response[0].responseuser', value)}
+                                onSubQuestionChange={(index, subcategoryValue, value) => {
+                                    const updatedResponses = { ...values.P18e.response[0].subQuestion1Responses };
+                                    updatedResponses[subcategoryValue] = updatedResponses[subcategoryValue] || [];
+                                    updatedResponses[subcategoryValue][index] = value;
+                                    setFieldValue('P18e.response[0].subQuestion1Responses', updatedResponses);
+                                }}
+                                selectedSubQuestions={values.P18e.response[0].subQuestion1Responses || {}} // Inicializa con respuestas vacías
+                                errors={errors.P18e?.response?.[0]}
+                                touched={touched.P18e?.response?.[0]}
+                            />
+
+                            <ErrorMessage errors={errors} touched={touched} fieldName="P18e" />
                         </View>
                     )}
                 </Formik>
 
                 <View style={globalStyles.buttonsBanner}>
                     <Prevcomponent onPrevPressed={() => navigation.navigate('page5' as never)} />
-                    <NextComponent onNextPress={() => navigation.navigate('Home' as never)} />
+                    <NextComponent onNextPress={() => navigation.navigate('page7' as never)} />
                 </View>
             </ScrollView>
         </KeyboardAvoidingView>
