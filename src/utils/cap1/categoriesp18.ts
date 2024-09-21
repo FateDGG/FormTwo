@@ -1,10 +1,11 @@
   export const subcategories18a = [
-    { label: 'Atención inadecuada por razón de la condición cultural o lingüística.  ', value: '127' },
-    { label: 'Falta de información, rutas de atención y asistencia legal de fácil comprensión o disponible en lenguas minoritarias. ', value: '128' },
-    { label: 'Falta de articulación y coordinación entre la justicia propia afro y la jurisdicción ordinaria ', value: '129' },
-    { label: 'Falta de articulación y coordinación entre la Justicia Especial Indígena y la jurisdicción ordinaria ', value: '63' },
-    { label: 'Falta de asistencia de traductores o interpretes dentro de los procedimientos o trámites legales. ', value: '62' },   
-    { label: 'Otro ¿Cuál? ', value: '61' },
+    { label: 'Paternidad / maternidad o adopción   ', value: '127' },
+    { label: 'Cuota de alimentos, custodia, patria potestad, visitas  ', value: '128' },
+    { label: 'Separación, divorcio, liquidación, unión libre  ', value: '129' },
+    { label: 'División de propiedad / Separación de bienes  ', value: '63' },
+    { label: 'Herencias, sucesiones, testamentos  ', value: '62' },   
+    { label: 'Cuidado de personas que más lo requieren (niños, niñas y adolescentes, personas enfermas, personas con discapacidad, personas mayores) ', value: '61' },
+    { label: 'Quien asume los gastos del hogar', value: '69' },
   ];
   export const subcategories16b = [
     { label: 'Falta de atención o atención inadecuada o desestimación de los conflictos en razón del sexo, identidad de género, orientación sexual o expresión de género.  ', value: '132' },

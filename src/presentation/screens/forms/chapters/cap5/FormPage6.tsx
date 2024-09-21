@@ -16,7 +16,7 @@ import { DropDownMultiQuestion } from '../../../../components/shared/DropDownMul
 import { subcategories18a } from '../../../../../utils/cap1/categoriesp18';
 
 export interface FormValues {
-    P18: FormTemplate;
+    P18a: FormTemplate;
 }
 
 export const FormPage6 = () => {
@@ -35,6 +35,9 @@ export const FormPage6 = () => {
                 <View style={globalStyles.CapTitle}>
                     <Text style={globalStyles.Title}>Capítulo 5. Conflictividades</Text>
                 </View>
+                <View >
+                    <Text style={globalStyles.Title2}> P18.  	Del siguiente listado de problemas / desacuerdos / conflictos y disputas ¿Cuáles considera usted que se le presentan con mayor frecuencia a los miembros de su comunidad? </Text>
+                </View>
 
                 <Formik
                     initialValues={initialValues}
@@ -50,25 +53,25 @@ export const FormPage6 = () => {
                     {({ handleChange, handleBlur, handleSubmit, values, setFieldValue, setFieldTouched, errors, touched }) => (
                         <View>
                             <DropDownMultiQuestion
-                                questionTitle="P18. Económicas"
-                                subcategoryTitle="Seleccione lo que aplica"
+                                questionTitle="P18.1. Problemas relacionados con familiares como separación o divorcio, cuotas de alimentos, herencias o sucesiones, paternidad / maternidad, cuidado de personas que más lo requieren y gastos del hogar. "
+                                subcategoryTitle="P19.1. ¿Cuáles de las siguientes tipologías de problemas afectan con mayor frecuencia a los miembros de su comunidad? "
                                 subcategories={subcategories18a}  // Lista de subcategorías
-                                selectedCategory={values.P18.response[0].idoptresponse}
-                                selectedSubcategories={values.P18.response[0].responseuser || []}
-                                onCategoryChange={(value) => setFieldValue('P18.response[0].idoptresponse', value)}
-                                onSubcategoryChange={(value) => setFieldValue('P18.response[0].responseuser', value)}
+                                selectedCategory={values.P18a.response[0].idoptresponse}
+                                selectedSubcategories={values.P18a.response[0].responseuser || []}
+                                onCategoryChange={(value) => setFieldValue('P18a.response[0].idoptresponse', value)}
+                                onSubcategoryChange={(value) => setFieldValue('P18a.response[0].responseuser', value)}
                                 onSubQuestionChange={(index, subcategoryValue, value) => {
-                                    const updatedResponses = { ...values.P18.response[0].subQuestion1Responses };
+                                    const updatedResponses = { ...values.P18a.response[0].subQuestion1Responses };
                                     updatedResponses[subcategoryValue] = updatedResponses[subcategoryValue] || [];
                                     updatedResponses[subcategoryValue][index] = value;
-                                    setFieldValue('P18.response[0].subQuestion1Responses', updatedResponses);
+                                    setFieldValue('P18a.response[0].subQuestion1Responses', updatedResponses);
                                 }}
-                                selectedSubQuestions={values.P18.response[0].subQuestion1Responses || {}} // Inicializa con respuestas vacías
-                                errors={errors.P18?.response?.[0]}
-                                touched={touched.P18?.response?.[0]}
+                                selectedSubQuestions={values.P18a.response[0].subQuestion1Responses || {}} // Inicializa con respuestas vacías
+                                errors={errors.P18a?.response?.[0]}
+                                touched={touched.P18a?.response?.[0]}
                             />
 
-                            <ErrorMessage errors={errors} touched={touched} fieldName="P18" />
+                            <ErrorMessage errors={errors} touched={touched} fieldName="P18a" />
                         </View>
                     )}
                 </Formik>

@@ -70,8 +70,21 @@ export const getInitialValuesPage4 = () => {
 
 export const getInitialValuesPage6 = () => {
     return {
-        P18: initialResponses("P8","1","","18"),
-        
+        P18a: initialResponses("P8","1","","18"),
+        P18b: initialResponses("P8","1","","18"),
+        P18c: initialResponses("P8","1","","18"),
+        P18d: initialResponses("P8","1","","18"),
+        P18e: initialResponses("P8","1","","18"),
+        P18f: initialResponses("P8","1","","18"),
+        P18g: initialResponses("P8","1","","18"),
+        P18h: initialResponses("P8","1","","18"),
+        P18i: initialResponses("P8","1","","18"),
+        P18j: initialResponses("P8","1","","18"),
+        P18k: initialResponses("P8","1","","18"),
+        P18l: initialResponses("P8","1","","18"),
+        P18m: initialResponses("P8","1","","18"),
+        P18n: initialResponses("P8","1","","18"),
+        P18o: initialResponses("P8","1","","18"),
     }
 
 }

@@ -2,7 +2,8 @@ import { StyleSheet } from "react-native";
 
 export const globalColors = {
     background: '#ffff',
-    primarybg: '#4A7E8F'
+    primarybg: '#4A7E8F',
+    another:'#000000'
 }
 
 export const globalStyles = StyleSheet.create({
@@ -23,6 +24,14 @@ export const globalStyles = StyleSheet.create({
         backgroundColor: globalColors.primarybg,
         padding: 10,
         borderRadius: 20,
+        textAlign: 'center',
+        marginBottom: 10,
+    },
+    QuestTitle :{
+        width: '100%',
+        
+        padding: 10,
+
         textAlign: 'center',
         marginBottom: 10,
     },
@@ -67,6 +76,13 @@ export const globalStyles = StyleSheet.create({
         fontWeight: '500',
         color: globalColors.background,
         textAlign: 'center',
+    },
+    Title2: {
+        fontSize: 18,
+        fontWeight: '500',
+        color: globalColors.another,
+        textAlign: 'left',
+        padding:15
     },
     input:{
         height: 50,
