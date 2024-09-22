@@ -33,19 +33,18 @@ export const getInitialValuesPage2 = () => {
     return {
         P7: initialResponses("P7","1","","7"),
         P8: initialResponses("P8","1","","8"),
-        P9: initialResponses("P9","1","",""),
+        P9: initialResponses("P9","1","","9"),
         P10: initialResponses("P10","1","","10"),
         P11: initialResponses("P11","1","10","11"),
         P12: initialResponses("P12","1","","12"),
-        P13: initialResponses("P13","1","","13"),
     }
 }
 
 export const getInitialValuesPage3 = () => {
     return {
-        P13: initialResponses("P13","1","","13"),
-        P14: initialResponses("P14","1","","14"),
-        P15: initialResponses("P15","1","","15"),
+        P13: initialResponses("P13","2","","13"),
+        P14: initialResponses("P14","2","","14"),
+        P15: initialResponses("P15","2","","15"),
 
     }
 

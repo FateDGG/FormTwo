@@ -37,7 +37,7 @@ export const DoubleDropdownInput = ({
           onValueChange={(value) => {
             onCategoryChange(value);
             if (value !== specificCategoryValue) {
-              onSubcategoryChange(''); // Reset text input when category changes and is not specificCategoryValue
+              onSubcategoryChange(''); // Resetea solo si no es "Otro"
             }
           }}
         >
@@ -58,7 +58,7 @@ export const DoubleDropdownInput = ({
               value={selectedSubcategory}
               onChangeText={(text) => onSubcategoryChange(text)}
               placeholder="Especifica tu respuesta"
-              style={globalStyles.input} // Asegúrate de definir estilos para `textInput`
+              style={globalStyles.input}
             />
             {errors?.subcategory && touched?.subcategory && (
               <Text style={{ color: 'red' }}>{errors.subcategory}</Text>

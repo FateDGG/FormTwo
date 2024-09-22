@@ -63,19 +63,23 @@ export const validationSchemaPage2 = Yup.object().shape({
   P9: Yup.object().shape({
     response: Yup.array().of(
       Yup.object().shape({
-        idoptresponse: Yup.string().required("Seleccione una categoria")
-        .notOneOf([""], "Seleccionar una Opción válida"),
-        responseuser: Yup.array().of(Yup.string().required('Campo obligatorio')
-        .notOneOf([""], "Seleccionar una Opción válida"))
+        idoptresponse: Yup.string()
+          .required("Seleccione una categoría")
+          .notOneOf([""], "Seleccionar una Opción válida"),
+        responseuser: Yup.array().of(
+          Yup.string().notRequired() // No obligatorio
+        )
       })
     )
   }),
   P10: Yup.object().shape({
     response: Yup.array().of(
       Yup.object().shape({
-        responseuser: Yup.array().of(Yup.string().required('Campo obligatorio')
-      .notOneOf([""], "Seleccionar una Opción válida")
-      .notOneOf(["No"], "Debe aceptar si desea continuar la encuesta"))
+        responseuser: Yup.array().of(
+          Yup.string().required('Campo obligatorio')
+          .notOneOf([""], "Seleccionar una Opción válida")
+          .notOneOf(["No"], "Debe aceptar si desea continuar la encuesta")
+        )
       })
     )
   }),
@@ -95,7 +99,30 @@ export const validationSchemaPage2 = Yup.object().shape({
       })
     )
   }),
+});
+
+export const validationSchemaPage3 = Yup.object().shape({
   P13: Yup.object().shape({
+    response: Yup.array().of(
+      Yup.object().shape({
+        responseuser: Yup.array().of(Yup.string().required('Campo obligatorio')
+        .notOneOf([""], "Seleccionar una Opción válida"))
+      })
+    )
+  }),
+  P14: Yup.object().shape({
+    response: Yup.array().of(
+      Yup.object().shape({
+        idoptresponse: Yup.string()
+          .required("Seleccione una categoría")
+          .notOneOf([""], "Seleccionar una Opción válida"),
+        responseuser: Yup.array().of(
+          Yup.string().notRequired() // No obligatorio
+        )
+      })
+    )
+  }),
+  P15: Yup.object().shape({
     response: Yup.array().of(
       Yup.object().shape({
         responseuser: Yup.array().of(Yup.string().required('Campo obligatorio')
