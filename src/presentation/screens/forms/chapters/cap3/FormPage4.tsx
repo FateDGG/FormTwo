@@ -66,7 +66,7 @@ export const FormPage4 = () => {
                 {({handleChange, handleBlur,handleSubmit,values, setFieldValue, setFieldTouched, errors, touched}) =>(
                     <View>
                         
-                        <Text style={globalStyles.Title}>P16.   Del siguiente listado, ¿Cuáles considera, desde su rol (como representante de la comunidad), que son las principales barreras de acceso a la justicia que se le presentan a los miembros de su comunidad? </Text>
+                        <Text style={globalStyles.Title2}>P16.   Del siguiente listado, ¿Cuáles considera, desde su rol (como representante de la comunidad), que son las principales barreras de acceso a la justicia que se le presentan a los miembros de su comunidad? </Text>
 
 
                         <DoubleDropdownSubcat
