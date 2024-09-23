@@ -417,3 +417,38 @@ export const validationSchemaPage8 = Yup.object().shape({
     )
   }),
 });
+export const validationSchemaPage9 = Yup.object().shape({
+  P24: Yup.object().shape({
+      response: Yup.array().of(
+          Yup.object().shape({
+              idoptresponse: Yup.string(), // No obligatorio
+              responseuser: Yup.string(), // Puede ser opcional
+              subQuestion1Responses: Yup.object().shape({
+                  P25: Yup.string(), // Puede ser opcional
+                  P26: Yup.string(), // Puede ser opcional
+              }),
+          })
+      ),
+  }),
+  P27: Yup.object().shape({
+    response: Yup.array().of(
+      Yup.object().shape({
+        responseuser: Yup.array().of(Yup.string().required('Campo obligatorio'))
+      })
+    )
+  }),
+  P28: Yup.object().shape({
+    response: Yup.array().of(
+      Yup.object().shape({
+        responseuser: Yup.array().of(Yup.string().required('Campo obligatorio'))
+      })
+    )
+  }),
+  P29: Yup.object().shape({
+    response: Yup.array().of(
+      Yup.object().shape({
+        responseuser: Yup.array().of(Yup.string().required('Campo obligatorio'))
+      })
+    )
+  }),
+});

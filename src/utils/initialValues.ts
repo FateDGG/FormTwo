@@ -92,11 +92,9 @@ export const getInitialValuesPage6 = () => {
 export const getInitialValuesPage9 = () => {
     return {
         P24: initialResponses("P24","1","","24"),
-        P25: initialResponses("P24","1","","24"),
-        P26: initialResponses("P24","1","","24"),
-        P27: initialResponses("P24","1","","24"),
-        P28: initialResponses("P24","1","","24"),
-        P29: initialResponses("P24","1","","24"),
+        P27: initialResponses("P27","1","","27"),
+        P28: initialResponses("P28","1","","28"),
+        P29: initialResponses("P29","1","","29"),
     }
 
 }
