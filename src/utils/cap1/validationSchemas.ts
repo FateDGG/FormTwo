@@ -231,3 +231,189 @@ export const validationSchemaPage5 = Yup.object().shape({
     )
   }),
 });
+export const validationSchemaPage6 = Yup.object().shape({
+  P18a: Yup.object().shape({
+    response: Yup.array().of(
+      Yup.object().shape({
+        idoptresponse: Yup.string()
+          .required("Seleccione una categoría")
+          .notOneOf(["","18"], "Seleccionar una Opción válida"),
+        responseuser: Yup.array().of(
+          Yup.string().notRequired() // No obligatorio
+        )
+      })
+    )
+  }),
+  P18b: Yup.object().shape({
+    response: Yup.array().of(
+      Yup.object().shape({
+        idoptresponse: Yup.string()
+          .required("Seleccione una categoría")
+          .notOneOf(["","18"], "Seleccionar una Opción válida"),
+        responseuser: Yup.array().of(
+          Yup.string().notRequired() // No obligatorio
+        )
+      })
+    )
+  }),
+  P18c: Yup.object().shape({
+    response: Yup.array().of(
+      Yup.object().shape({
+        idoptresponse: Yup.string()
+          .required("Seleccione una categoría")
+          .notOneOf(["","18"], "Seleccionar una Opción válida"),
+        responseuser: Yup.array().of(
+          Yup.string().notRequired() // No obligatorio
+        )
+      })
+    )
+  }),
+  P18d: Yup.object().shape({
+    response: Yup.array().of(
+      Yup.object().shape({
+        idoptresponse: Yup.string()
+          .required("Seleccione una categoría")
+          .notOneOf(["s","18"], "Seleccionar una Opción válida"),
+        responseuser: Yup.array().of(
+          Yup.string().notRequired() // No obligatorio
+        )
+      })
+    )
+  }),
+  P18e: Yup.object().shape({
+    response: Yup.array().of(
+      Yup.object().shape({
+        idoptresponse: Yup.string()
+          .required("Seleccione una categoría")
+          .notOneOf(["s","18"], "Seleccionar una Opción válida"),
+        responseuser: Yup.array().of(
+          Yup.string().notRequired() // No obligatorio
+        )
+      })
+    )
+  }),
+});
+export const validationSchemaPage7 = Yup.object().shape({
+  P18f: Yup.object().shape({
+    response: Yup.array().of(
+      Yup.object().shape({
+        idoptresponse: Yup.string()
+          .required("Seleccione una categoría")
+          .notOneOf(["","18"], "Seleccionar una Opción válida"),
+        responseuser: Yup.array().of(
+          Yup.string().notRequired() // No obligatorio
+        )
+      })
+    )
+  }),
+  P18g: Yup.object().shape({
+    response: Yup.array().of(
+      Yup.object().shape({
+        idoptresponse: Yup.string()
+          .required("Seleccione una categoría")
+          .notOneOf(["","18"], "Seleccionar una Opción válida"),
+        responseuser: Yup.array().of(
+          Yup.string().notRequired() // No obligatorio
+        )
+      })
+    )
+  }),
+  P18h: Yup.object().shape({
+    response: Yup.array().of(
+      Yup.object().shape({
+        idoptresponse: Yup.string()
+          .required("Seleccione una categoría")
+          .notOneOf(["","18"], "Seleccionar una Opción válida"),
+        responseuser: Yup.array().of(
+          Yup.string().notRequired() // No obligatorio
+        )
+      })
+    )
+  }),
+  P18i: Yup.object().shape({
+    response: Yup.array().of(
+      Yup.object().shape({
+        idoptresponse: Yup.string()
+          .required("Seleccione una categoría")
+          .notOneOf(["","18"], "Seleccionar una Opción válida"),
+        responseuser: Yup.array().of(
+          Yup.string().notRequired() // No obligatorio
+        )
+      })
+    )
+  }),
+  P18j: Yup.object().shape({
+    response: Yup.array().of(
+      Yup.object().shape({
+        idoptresponse: Yup.string()
+          .required("Seleccione una categoría")
+          .notOneOf(["s","18"], "Seleccionar una Opción válida"),
+        responseuser: Yup.array().of(
+          Yup.string().notRequired() // No obligatorio
+        )
+      })
+    )
+  }),
+});
+export const validationSchemaPage8 = Yup.object().shape({
+  P18k: Yup.object().shape({
+    response: Yup.array().of(
+      Yup.object().shape({
+        idoptresponse: Yup.string()
+          .required("Seleccione una categoría")
+          .notOneOf(["","18"], "Seleccionar una Opción válida"),
+        responseuser: Yup.array().of(
+          Yup.string().notRequired() // No obligatorio
+        )
+      })
+    )
+  }),
+  P18l: Yup.object().shape({
+    response: Yup.array().of(
+      Yup.object().shape({
+        idoptresponse: Yup.string()
+          .required("Seleccione una categoría")
+          .notOneOf(["","18"], "Seleccionar una Opción válida"),
+        responseuser: Yup.array().of(
+          Yup.string().notRequired() // No obligatorio
+        )
+      })
+    )
+  }),
+  P18m: Yup.object().shape({
+    response: Yup.array().of(
+      Yup.object().shape({
+        idoptresponse: Yup.string()
+          .required("Seleccione una categoría")
+          .notOneOf(["","18"], "Seleccionar una Opción válida"),
+        responseuser: Yup.array().of(
+          Yup.string().notRequired() // No obligatorio
+        )
+      })
+    )
+  }),
+  P18n: Yup.object().shape({
+    response: Yup.array().of(
+      Yup.object().shape({
+        idoptresponse: Yup.string()
+          .required("Seleccione una categoría")
+          .notOneOf(["","18"], "Seleccionar una Opción válida"),
+        responseuser: Yup.array().of(
+          Yup.string().notRequired() // No obligatorio
+        )
+      })
+    )
+  }),
+  P18o: Yup.object().shape({
+    response: Yup.array().of(
+      Yup.object().shape({
+        idoptresponse: Yup.string()
+          .required("Seleccione una categoría")
+          .notOneOf(["","18"], "Seleccionar una Opción válida"),
+        responseuser: Yup.array().of(
+          Yup.string().notRequired() // No obligatorio
+        )
+      })
+    )
+  }),
+});
