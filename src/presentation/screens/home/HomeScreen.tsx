@@ -29,7 +29,7 @@ export const HomeScreen = () => {
     try {
       const fileContent = await RNFS.readFile(filePath);
       const parsedData = JSON.parse(fileContent); // Parsear contenido JSON
-      const response = await axios.post('https://your-api-endpoint.com/upload', parsedData); // Cambia el endpoint a tu API real
+      const response = await axios.post('urlApi', parsedData); // Cambiar url de endpoint al api
       if (response.status === 200) {
         // await RNFS.unlink(filePath); // Descomentar si se requiere eliminar el archivo después de enviarlo exitosamente
         // console.log(`Archivo ${filePath} enviado y eliminado con éxito.`);

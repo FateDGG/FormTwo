@@ -92,6 +92,14 @@ export const FormPage5 = () => {
                                     onCategoryChange={(value) => {
                                         console.log(`P16f: Category changed to: ${value}`);
                                         setFieldValue('P16f.response[0].idoptresponse', value);
+
+                                        // Si el valor es "No", guardamos "No" en responseuser
+                                        if (value === "no") {
+                                            setFieldValue('P16f.response[0].responseuser', ["No"]);
+                                        } else {
+                                            setFieldValue('P16f.response[0].responseuser', []);
+                                            console.log(`P16f: Subcategories reset`);
+                                        }
                                     }}
                                     onSubcategoryChange={(selectedValues) => {
                                         console.log(`P16f: Subcategories changed to:`, selectedValues);
@@ -115,6 +123,14 @@ export const FormPage5 = () => {
                                     onCategoryChange={(value) => {
                                         console.log(`P16g: Category changed to: ${value}`);
                                         setFieldValue('P16g.response[0].idoptresponse', value);
+
+                                        // Si el valor es "No", guardamos "No" en responseuser
+                                        if (value === "no") {
+                                            setFieldValue('P16g.response[0].responseuser', ["No"]);
+                                        } else {
+                                            setFieldValue('P16g.response[0].responseuser', []);
+                                            console.log(`P16g: Subcategories reset`);
+                                        }
                                     }}
                                     onSubcategoryChange={(selectedValues) => {
                                         console.log(`P16g: Subcategories changed to:`, selectedValues);
@@ -138,6 +154,14 @@ export const FormPage5 = () => {
                                     onCategoryChange={(value) => {
                                         console.log(`P16h: Category changed to: ${value}`);
                                         setFieldValue('P16h.response[0].idoptresponse', value);
+
+                                        // Si el valor es "No", guardamos "No" en responseuser
+                                        if (value === "no") {
+                                            setFieldValue('P16h.response[0].responseuser', ["No"]);
+                                        } else {
+                                            setFieldValue('P16h.response[0].responseuser', []);
+                                            console.log(`P16h: Subcategories reset`);
+                                        }
                                     }}
                                     onSubcategoryChange={(selectedValues) => {
                                         console.log(`P16h: Subcategories changed to:`, selectedValues);

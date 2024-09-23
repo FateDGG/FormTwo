@@ -87,10 +87,10 @@ export const FormPage4 = () => {
                                         
                                         const currentResponseUser = values.P16a.response[0].responseuser || [];
                                         
-                                        // Actualizamos responseuser en función de las subcategorías seleccionadas
+                                        // Actualizar responseuser en función de las subcategorías seleccionadas
                                         const updatedResponseUser = selectedValues.reduce((acc, subValue) => {
                                             if (!acc.includes(subValue)) {
-                                                acc.push(subValue); // Añadir si no está ya
+                                                acc.push(subValue); // Añadir si no se repite
                                             }
                                             return acc;
                                         }, [...currentResponseUser]);
@@ -138,7 +138,7 @@ export const FormPage4 = () => {
                                         setFieldValue('P16b.response[0].idoptresponse', value);
 
                                         // Si el valor es "No", guardamos "No" en responseuser
-                                        if (value === "No") {
+                                        if (value === "no") {
                                             setFieldValue('P16b.response[0].responseuser', ["No"]);
                                         } else {
                                             setFieldValue('P16b.response[0].responseuser', []);
@@ -178,7 +178,7 @@ export const FormPage4 = () => {
                                         setFieldValue('P16c.response[0].idoptresponse', value);
 
                                         // Si el valor es "No", guardamos "No" en responseuser
-                                        if (value === "No") {
+                                        if (value === "no") {
                                             setFieldValue('P16c.response[0].responseuser', ["No"]);
                                         } else {
                                             setFieldValue('P16c.response[0].responseuser', []);
@@ -218,7 +218,7 @@ export const FormPage4 = () => {
                                         setFieldValue('P16d.response[0].idoptresponse', value);
 
                                         // Si el valor es "No", guardamos "No" en responseuser
-                                        if (value === "No") {
+                                        if (value === "no") {
                                             setFieldValue('P16d.response[0].responseuser', ["No"]);
                                         } else {
                                             setFieldValue('P16d.response[0].responseuser', []);
