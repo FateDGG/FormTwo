@@ -452,3 +452,40 @@ export const validationSchemaPage9 = Yup.object().shape({
     )
   }),
 });
+export const validationSchemaPage10 = Yup.object().shape({
+  A1: Yup.object().shape({
+      response: Yup.array().of(
+          Yup.object().shape({
+              responseuser: Yup.array().of(Yup.string().required('Este campo es obligatorio'))
+          })
+      )
+  }),
+  A2: Yup.object().shape({
+      response: Yup.array().of(
+          Yup.object().shape({
+              responseuser: Yup.array().of(Yup.string().required('La fecha es obligatoria'))
+          })
+      )
+  }),
+  A3: Yup.object().shape({
+      response: Yup.array().of(
+          Yup.object().shape({
+              responseuser: Yup.array().of(Yup.string().required('La hora de inicio es obligatoria'))
+          })
+      )
+  }),
+  A4: Yup.object().shape({
+      response: Yup.array().of(
+          Yup.object().shape({
+              responseuser: Yup.array().of(Yup.string().required('La hora de finalización es obligatoria'))
+          })
+      )
+  }),
+  A5: Yup.object().shape({
+      response: Yup.array().of(
+          Yup.object().shape({
+              responseuser: Yup.array().of(Yup.string().required('Selecciona una opción'))
+          })
+      )
+  }),
+});

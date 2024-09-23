@@ -91,21 +91,21 @@ export const getInitialValuesPage6 = () => {
 
 export const getInitialValuesPage9 = () => {
     return {
-        P24: initialResponses("P24","1","","24"),
-        P27: initialResponses("P27","1","","27"),
-        P28: initialResponses("P28","1","","28"),
-        P29: initialResponses("P29","1","","29"),
+        P24: initialResponses("P24","5","","24"),
+        P27: initialResponses("P27","5","","27"),
+        P28: initialResponses("P28","5","","28"),
+        P29: initialResponses("P29","5","","29"),
     }
 
 }
 
 export const getInitialValuesPage10 = () => {
     return {
-        A1: initialResponses("A1","1","","A1"),
-        A2: initialResponses("A2","1","","A2"),
-        A3: initialResponses("A3","1","","A3"),
-        A4: initialResponses("A4","1","","A4"),
-        A5: initialResponses("A5","1","","A5"),
+        A1: initialResponses("A1","A","","A1"),
+        A2: initialResponses("A2","A","","A2"),
+        A3: initialResponses("A3","A","","A3"),
+        A4: initialResponses("A4","A","","A4"),
+        A5: initialResponses("A5","A","","A5"),
 
     }
 

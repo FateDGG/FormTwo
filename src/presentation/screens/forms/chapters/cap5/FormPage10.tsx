@@ -15,6 +15,7 @@ import { ErrorMessage } from '../../../../components/shared/ErrorComponent';
 import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker'; 
 import { InputComponent } from '../../../../components/shared/InputComponent';
 import { DropDownComponent } from '../../../../components/shared/DropDownComponent';
+import { validationSchemaPage10 } from '../../../../../utils/cap1/validationSchemas';
 
 export interface FormValues {
     A1: FormTemplate;
@@ -43,14 +44,10 @@ export const FormPage10 = () => {
             const formattedValue = mode === 'date' 
                 ? selectedDate.toLocaleDateString() 
                 : selectedDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-            // Guardamos la fecha/hora en la estructura correcta de responseuser
+            console.log(`Selected ${pickerField}: ${formattedValue}`);
             setFieldValue(`${pickerField}.response[0].responseuser[0]`, formattedValue);
         }
     };
-
-    function setFieldTouched(arg0: string): void {
-        throw new Error('Function not implemented.');
-    }
 
     return (
         <KeyboardAvoidingView
@@ -64,23 +61,31 @@ export const FormPage10 = () => {
 
                 <Formik
                     initialValues={initialValues}
+                    validationSchema={validationSchemaPage10}
                     onSubmit={async (values: FormValues, { setSubmitting }: FormikHelpers<FormValues>) => {
+                        console.log('Submitting form with values:', values);
                         try {
                             await saveAllData(`${fileName}.json`, values, finalSurveyId);
+                            console.log('Data saved successfully');
+                        } catch (error) {
+                            console.error('Error saving data:', error);
                         } finally {
                             setSubmitting(false);
-                            navigation.navigate('page2' as never);
+                            navigation.navigate('Home' as never);
                         }
                     }}
                 >
-                    {({ setFieldValue, values, errors, touched }) => (
+                    {({ setFieldValue, values, errors, touched, handleSubmit }) => (
                         <View>
                             {/* A1 Input */}
                             <InputComponent
                                 info='A1' 
                                 textTitle='A1. ¿Por qué no existen esas alianzas o protocolos de coordinación?'
-                                handleChange={(value: string) => setFieldValue('A1.response[0].responseuser[0]', value)}
-                                handleBlur={() => setFieldTouched('A1.response[0].responseuser[0]')}
+                                handleChange={(value: string) => {
+                                    console.log('A1 answer changed to:', value);
+                                    setFieldValue('A1.response[0].responseuser[0]', value);
+                                }}
+                                handleBlur={() => console.log('A1 input blurred')}
                                 values={values.A1.response[0].responseuser} 
                             />
                             <ErrorMessage errors={errors} touched={touched} fieldName="A1" />
@@ -147,19 +152,23 @@ export const FormPage10 = () => {
                             {/* DropDown for A5 */}
                             <DropDownComponent
                                 values={values.A5.response[0].responseuser}
-                                setFieldValue={(value) => setFieldValue('A5.response[0].responseuser[0]', value)}
+                                setFieldValue={(value) => {
+                                    console.log('A5 answer changed to:', value);
+                                    setFieldValue('A5.response[0].responseuser[0]', value);
+                                }}
                                 qTitle='A5. Novedades en campo'
                                 opValues={['Completa', 'Incompleta', 'Rechazó']}
                             />
                             <ErrorMessage errors={errors} touched={touched} fieldName="A5"/>
+                            <View style={globalStyles.buttonsBanner}>
+                                <Prevcomponent onPrevPressed={() => navigation.navigate('page9' as never)} />
+                                <NextComponent onNextPress={handleSubmit} />
+                            </View>
                         </View>
                     )}
                 </Formik>
 
-                <View style={globalStyles.buttonsBanner}>
-                    <Prevcomponent onPrevPressed={() => navigation.navigate('page9' as never)} />
-                    <NextComponent onNextPress={() => navigation.navigate('Home' as never)} />
-                </View>
+
             </ScrollView>
         </KeyboardAvoidingView>
     );
