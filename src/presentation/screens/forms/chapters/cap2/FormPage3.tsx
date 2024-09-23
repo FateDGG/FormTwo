@@ -96,36 +96,57 @@ export const FormPage3 = () => {
                 <ErrorMessage errors={errors} touched={touched} fieldName="P13" />
 
                 <DoubleDropdownInput
-                  categoryTitle="P14. ¿Cuál es el tamaño de su comunidad?"
-                  subcategoryTitle="Ingrese una subcategoría:"
-                  categories={categories}
-                  selectedCategory={values.P14.response[0].idoptresponse}
-                  selectedSubcategory={values.P14.response[0].responseuser[0]}
-                  onCategoryChange={(value) => {
-                    console.log('P14 category changed to:', value); // Log del cambio en categoría de P14
+                categoryTitle="P14. ¿Cuál es el tamaño de su comunidad?"
+                subcategoryTitle="Ingrese una subcategoría:"
+                categories={categories}
+                selectedCategory={values.P14.response[0].idoptresponse}
+                selectedSubcategory={values.P14.response[0].responseuser[0]}
+                onCategoryChange={(value) => {
+                    console.log('P14 category changed to:', value);
                     setFieldValue('P14.response[0].idoptresponse', value);
 
                     const selectedOption = categories.find(option => option.value === value);
-                    if (selectedOption) {
-                      if (value !== '61') {
-                        setFieldValue('P14.response[0].responseuser[0]', selectedOption.label); // Guardar el label
-                      } else {
-                        setFieldValue('P14.response[0].responseuser[0]', ''); // No cambiar responseuser aquí
-                      }
+                    if (selectedOption && value !== '61') {
+                    setFieldValue('P14.response[0].responseuser[0]', selectedOption.label); // Guardar el label
                     }
-                  }}
-                  onSubcategoryChange={(value) => {
-                    console.log('P14 subcategory changed to:', value); // Log del cambio en subcategoría de P14
+                }}
+                onSubcategoryChange={(value) => {
+                    console.log('P14 subcategory changed to:', value);
                     const currentCategoryValue = values.P14.response[0].idoptresponse;
 
                     if (currentCategoryValue === '61') {
-                      setFieldValue('P14.response[0].responseuser[0]', value); // Guardar el texto del input si es '61'
+                    // Aquí guardamos el texto ingresado en el campo de texto
+                    const currentResponseUser = values.P14.response[0].responseuser[0] || '';
+                    const updatedResponseUser = currentResponseUser.split(',').map(item => item.trim());
+
+                    // Solo añadir el valor si no está vacío y no está ya incluido
+                    if (value && !updatedResponseUser.includes(value)) {
+                        updatedResponseUser.push(value);
                     }
-                  }}
-                  errors={errors.P14?.response?.[0]}
-                  touched={touched.P14?.response?.[0]}
+
+                    setFieldValue('P14.response[0].responseuser[0]', updatedResponseUser.join(', '));
+                    } else {
+                    // Aquí puedes manejar la lógica para los checkboxes
+                    const currentResponseUser = values.P14.response[0].responseuser[0] || '';
+                    const updatedResponseUser = currentResponseUser.split(',').map(item => item.trim());
+
+                    if (value === 'yes') { // Si seleccionas 'Sí' y hay checkboxes
+                        const newCheckboxValue = 'valor del checkbox'; // Cambia esto por el valor real del checkbox
+                        if (!updatedResponseUser.includes(newCheckboxValue)) {
+                        updatedResponseUser.push(newCheckboxValue);
+                        }
+                    }
+
+                    setFieldValue('P14.response[0].responseuser[0]', updatedResponseUser.join(', '));
+                    }
+                }}
+                errors={errors.P14?.response?.[0]}
+                touched={touched.P14?.response?.[0]}
                 />
                 <ErrorMessage errors={errors} touched={touched} fieldName="P14" />
+
+                <ErrorMessage errors={errors} touched={touched} fieldName="P14" />
+
 
                 <DropDownComponent
                   values={values.P15.response[0].responseuser}

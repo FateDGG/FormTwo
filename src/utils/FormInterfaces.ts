@@ -1,4 +1,5 @@
 export interface Response{
+    additionalText: string;
     subQuestions: string[];
     subQuestion3Responses: any;
     subQuestion1Responses: any;
