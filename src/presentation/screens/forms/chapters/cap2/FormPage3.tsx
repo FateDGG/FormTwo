@@ -111,35 +111,28 @@ export const FormPage3 = () => {
                     }
                 }}
                 onSubcategoryChange={(value) => {
-                    console.log('P14 subcategory changed to:', value);
-                    const currentCategoryValue = values.P14.response[0].idoptresponse;
+                  console.log('P14 subcategory changed to:', value);
+                  const currentCategoryValue = values.P14.response[0].idoptresponse;
 
-                    if (currentCategoryValue === '61') {
-                    // Aquí guardamos el texto ingresado en el campo de texto
-                    const currentResponseUser = values.P14.response[0].responseuser[0] || '';
-                    const updatedResponseUser = currentResponseUser.split(',').map(item => item.trim());
+                  if (currentCategoryValue === '61') {
+                      // Obtener el array actual de responseuser
+                      const currentResponseUser = values.P14.response[0].responseuser[0] || '';
+                      let updatedResponseUser = currentResponseUser.split(',').map(item => item.trim());
 
-                    // Solo añadir el valor si no está vacío y no está ya incluido
-                    if (value && !updatedResponseUser.includes(value)) {
-                        updatedResponseUser.push(value);
-                    }
+                      // Verificar si el valor no está vacío y no está ya en el array
+                      if (value && !updatedResponseUser.includes(value)) {
+                          updatedResponseUser = [value]; // Reemplazar con el nuevo valor
+                          console.log('Updated responseuser:', updatedResponseUser.join(', ')); // Log de la respuesta actualizada
+                      } else {
+                          // Si ya existe, actualizamos la respuesta eliminando duplicados
+                          updatedResponseUser = [...new Set(updatedResponseUser)];
+                          console.log('Responseuser after removing duplicates:', updatedResponseUser.join(', ')); // Log después de eliminar duplicados
+                      }
 
-                    setFieldValue('P14.response[0].responseuser[0]', updatedResponseUser.join(', '));
-                    } else {
-                    // Aquí puedes manejar la lógica para los checkboxes
-                    const currentResponseUser = values.P14.response[0].responseuser[0] || '';
-                    const updatedResponseUser = currentResponseUser.split(',').map(item => item.trim());
-
-                    if (value === 'yes') { // Si seleccionas 'Sí' y hay checkboxes
-                        const newCheckboxValue = 'valor del checkbox'; // Cambia esto por el valor real del checkbox
-                        if (!updatedResponseUser.includes(newCheckboxValue)) {
-                        updatedResponseUser.push(newCheckboxValue);
-                        }
-                    }
-
-                    setFieldValue('P14.response[0].responseuser[0]', updatedResponseUser.join(', '));
-                    }
-                }}
+                      // Guardar el valor formateado
+                      setFieldValue('P14.response[0].responseuser[0]', updatedResponseUser.join(', '));
+                  }
+              }}
                 errors={errors.P14?.response?.[0]}
                 touched={touched.P14?.response?.[0]}
                 />
