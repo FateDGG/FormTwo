@@ -60,6 +60,7 @@ export const FormPage5 = () => {
                                     P16. Del siguiente listado, ¿Cuáles considera, desde su rol (como representante de la comunidad), que son las principales barreras de acceso a la justicia que se le presentan a los miembros de su comunidad?
                                 </Text>
 
+                                {/* P16e */}
                                 <DoubleDropdownSubcat
                                     questionTitle="P16.5. Económicas"
                                     subcategoryTitle="Seleccione lo que aplica"
@@ -69,6 +70,12 @@ export const FormPage5 = () => {
                                     onCategoryChange={(value) => {
                                         console.log(`P16e: Category changed to: ${value}`);
                                         setFieldValue('P16e.response[0].idoptresponse', value);
+
+                                        if (value === "no") {
+                                            setFieldValue('P16e.response[0].responseuser', ["No"]);
+                                        } else {
+                                            setFieldValue('P16e.response[0].responseuser', []);
+                                        }
                                     }}
                                     onSubcategoryChange={(selectedValues) => {
                                         console.log(`P16e: Subcategories changed to:`, selectedValues);
@@ -83,6 +90,7 @@ export const FormPage5 = () => {
                                 />
                                 <ErrorMessage errors={errors} touched={touched} fieldName="P16e" />
 
+                                {/* P16f */}
                                 <DoubleDropdownSubcat
                                     questionTitle="P16.6. Geográficas"
                                     subcategoryTitle="Seleccione lo que aplica"
@@ -93,12 +101,10 @@ export const FormPage5 = () => {
                                         console.log(`P16f: Category changed to: ${value}`);
                                         setFieldValue('P16f.response[0].idoptresponse', value);
 
-                                        // Si el valor es "No", guardamos "No" en responseuser
                                         if (value === "no") {
                                             setFieldValue('P16f.response[0].responseuser', ["No"]);
                                         } else {
                                             setFieldValue('P16f.response[0].responseuser', []);
-                                            console.log(`P16f: Subcategories reset`);
                                         }
                                     }}
                                     onSubcategoryChange={(selectedValues) => {
@@ -114,6 +120,7 @@ export const FormPage5 = () => {
                                 />
                                 <ErrorMessage errors={errors} touched={touched} fieldName="P16f" />
 
+                                {/* P16g */}
                                 <DoubleDropdownSubcat
                                     questionTitle="P16.7. Institucionales"
                                     subcategoryTitle="Seleccione lo que aplica"
@@ -124,12 +131,10 @@ export const FormPage5 = () => {
                                         console.log(`P16g: Category changed to: ${value}`);
                                         setFieldValue('P16g.response[0].idoptresponse', value);
 
-                                        // Si el valor es "No", guardamos "No" en responseuser
                                         if (value === "no") {
                                             setFieldValue('P16g.response[0].responseuser', ["No"]);
                                         } else {
                                             setFieldValue('P16g.response[0].responseuser', []);
-                                            console.log(`P16g: Subcategories reset`);
                                         }
                                     }}
                                     onSubcategoryChange={(selectedValues) => {
@@ -145,6 +150,7 @@ export const FormPage5 = () => {
                                 />
                                 <ErrorMessage errors={errors} touched={touched} fieldName="P16g" />
 
+                                {/* P16h */}
                                 <DoubleDropdownSubcat
                                     questionTitle="P16.8. Tecnológicas"
                                     subcategoryTitle="Seleccione lo que aplica"
@@ -155,12 +161,10 @@ export const FormPage5 = () => {
                                         console.log(`P16h: Category changed to: ${value}`);
                                         setFieldValue('P16h.response[0].idoptresponse', value);
 
-                                        // Si el valor es "No", guardamos "No" en responseuser
                                         if (value === "no") {
                                             setFieldValue('P16h.response[0].responseuser', ["No"]);
                                         } else {
                                             setFieldValue('P16h.response[0].responseuser', []);
-                                            console.log(`P16h: Subcategories reset`);
                                         }
                                     }}
                                     onSubcategoryChange={(selectedValues) => {
@@ -184,8 +188,6 @@ export const FormPage5 = () => {
                         );
                     }}
                 </Formik>
-
- 
             </ScrollView>
         </KeyboardAvoidingView>
     );

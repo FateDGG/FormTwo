@@ -63,6 +63,7 @@ export const FormPage4 = () => {
                             <View>
                                 <Text style={globalStyles.Title2}>P16. Del siguiente listado, ¿Cuáles considera, desde su rol (como representante de la comunidad), que son las principales barreras de acceso a la justicia que se le presentan a los miembros de su comunidad?</Text>
 
+                                {/* P16a */}
                                 <DoubleDropdownSubcat
                                     questionTitle="P16.1. Culturales y lingüísticas"
                                     subcategoryTitle="Seleccione lo que aplica"
@@ -72,60 +73,46 @@ export const FormPage4 = () => {
                                     onCategoryChange={(value) => {
                                         console.log(`P16a: Category changed to: ${value}`);
                                         setFieldValue('P16a.response[0].idoptresponse', value);
-                                        
-                                        // Manejar el valor "No"
+
                                         if (value === "no") {
-                                            setFieldValue('P16a.response[0].responseuser', ["No"]); // Guardar "No" en responseuser
+                                            setFieldValue('P16a.response[0].responseuser', ["No"]);
                                         } else {
-                                            setFieldValue('P16a.response[0].responseuser', []); // Reset subcategories
+                                            setFieldValue('P16a.response[0].responseuser', []);
                                         }
-                                        
                                         console.log(`P16a: Subcategories reset`);
                                     }}
                                     onSubcategoryChange={(selectedValues) => {
                                         console.log(`P16a: Subcategories changed to:`, selectedValues);
-                                        
+
                                         const currentResponseUser = values.P16a.response[0].responseuser || [];
-                                        
-                                        // Actualizar responseuser en función de las subcategorías seleccionadas
-                                        const updatedResponseUser = selectedValues.reduce((acc, subValue) => {
-                                            if (!acc.includes(subValue)) {
-                                                acc.push(subValue); // Añadir si no se repite
+                                        const updatedResponseUser = currentResponseUser.filter(item => selectedValues.includes(item));
+
+                                        selectedValues.forEach((subValue) => {
+                                            if (!updatedResponseUser.includes(subValue)) {
+                                                updatedResponseUser.push(subValue);
                                             }
-                                            return acc;
-                                        }, [...currentResponseUser]);
-                                        
+                                        });
+
                                         setFieldValue('P16a.response[0].responseuser', updatedResponseUser);
                                     }}
                                     onTextChange={(text) => {
                                         console.log(`P16a: Additional text changed to: ${text}`);
-                                        
-                                        // Actualizar el campo de texto
-                                        setFieldValue('P16a.response[0].additionalText', text);
-                                        
-                                        // Actualizar responseuser solo si el texto es diferente
+
                                         const currentResponseUser = values.P16a.response[0].responseuser || [];
-                                        
-                                        // Filtrar el texto antiguo si existe
                                         const filteredResponseUser = currentResponseUser.filter(item => item !== values.P16a.response[0].additionalText);
-                                        
-                                        // Solo añadir el texto actual si no está vacío
+
                                         if (text) {
                                             filteredResponseUser.push(text);
                                         }
 
                                         setFieldValue('P16a.response[0].responseuser', filteredResponseUser);
+                                        setFieldValue('P16a.response[0].additionalText', text);
                                     }}
                                     errors={errors.P16a?.response?.[0]}
                                     touched={touched.P16a?.response?.[0]}
                                 />
                                 <ErrorMessage errors={errors} touched={touched} fieldName="P16a" />
-                                <ErrorMessage errors={errors} touched={touched} fieldName="P16a" />
 
-
-                                {/* Repetir para las otras preguntas */}
-                                
-                                {/* P16b */}
                                 {/* P16b */}
                                 <DoubleDropdownSubcat
                                     questionTitle="P16.2. De género"
@@ -137,19 +124,23 @@ export const FormPage4 = () => {
                                         console.log(`P16b: Category changed to: ${value}`);
                                         setFieldValue('P16b.response[0].idoptresponse', value);
 
-                                        // Si el valor es "No", guardamos "No" en responseuser
                                         if (value === "no") {
                                             setFieldValue('P16b.response[0].responseuser', ["No"]);
                                         } else {
                                             setFieldValue('P16b.response[0].responseuser', []);
-                                            console.log(`P16b: Subcategories reset`);
                                         }
                                     }}
-                                    onSubcategoryChange={(subValues) => {
-                                        console.log(`P16b: Subcategories changed to:`, subValues);
+                                    onSubcategoryChange={(selectedValues) => {
+                                        console.log(`P16b: Subcategories changed to:`, selectedValues);
 
                                         const currentResponseUser = values.P16b.response[0].responseuser || [];
-                                        const updatedResponseUser = [...new Set([...currentResponseUser, ...subValues])]; // Evita duplicados
+                                        const updatedResponseUser = currentResponseUser.filter(item => selectedValues.includes(item));
+
+                                        selectedValues.forEach((subValue) => {
+                                            if (!updatedResponseUser.includes(subValue)) {
+                                                updatedResponseUser.push(subValue);
+                                            }
+                                        });
 
                                         setFieldValue('P16b.response[0].responseuser', updatedResponseUser);
                                     }}
@@ -157,15 +148,20 @@ export const FormPage4 = () => {
                                         console.log(`P16b: Additional text changed to: ${text}`);
 
                                         const currentResponseUser = values.P16b.response[0].responseuser || [];
-                                        const updatedResponseUser = [...new Set([...currentResponseUser.filter(sub => sub !== values.P16b.response[0].additionalText), text])]; // Actualizar texto sin duplicar
+                                        const filteredResponseUser = currentResponseUser.filter(item => item !== values.P16b.response[0].additionalText);
 
-                                        setFieldValue('P16b.response[0].responseuser', updatedResponseUser);
+                                        if (text) {
+                                            filteredResponseUser.push(text);
+                                        }
+
+                                        setFieldValue('P16b.response[0].responseuser', filteredResponseUser);
                                         setFieldValue('P16b.response[0].additionalText', text);
                                     }}
                                     errors={errors.P16b?.response?.[0]}
                                     touched={touched.P16b?.response?.[0]}
                                 />
                                 <ErrorMessage errors={errors} touched={touched} fieldName="P16b" />
+
                                 {/* P16c */}
                                 <DoubleDropdownSubcat
                                     questionTitle="P16.3. De seguridad, orden público o asociadas al conflicto armado"
@@ -177,19 +173,23 @@ export const FormPage4 = () => {
                                         console.log(`P16c: Category changed to: ${value}`);
                                         setFieldValue('P16c.response[0].idoptresponse', value);
 
-                                        // Si el valor es "No", guardamos "No" en responseuser
                                         if (value === "no") {
                                             setFieldValue('P16c.response[0].responseuser', ["No"]);
                                         } else {
                                             setFieldValue('P16c.response[0].responseuser', []);
-                                            console.log(`P16c: Subcategories reset`);
                                         }
                                     }}
-                                    onSubcategoryChange={(subValues) => {
-                                        console.log(`P16c: Subcategories changed to:`, subValues);
+                                    onSubcategoryChange={(selectedValues) => {
+                                        console.log(`P16c: Subcategories changed to:`, selectedValues);
 
                                         const currentResponseUser = values.P16c.response[0].responseuser || [];
-                                        const updatedResponseUser = [...new Set([...currentResponseUser, ...subValues])]; // Evita duplicados
+                                        const updatedResponseUser = currentResponseUser.filter(item => selectedValues.includes(item));
+
+                                        selectedValues.forEach((subValue) => {
+                                            if (!updatedResponseUser.includes(subValue)) {
+                                                updatedResponseUser.push(subValue);
+                                            }
+                                        });
 
                                         setFieldValue('P16c.response[0].responseuser', updatedResponseUser);
                                     }}
@@ -197,18 +197,23 @@ export const FormPage4 = () => {
                                         console.log(`P16c: Additional text changed to: ${text}`);
 
                                         const currentResponseUser = values.P16c.response[0].responseuser || [];
-                                        const updatedResponseUser = [...new Set([...currentResponseUser.filter(sub => sub !== values.P16c.response[0].additionalText), text])]; // Actualizar texto sin duplicar
+                                        const filteredResponseUser = currentResponseUser.filter(item => item !== values.P16c.response[0].additionalText);
 
-                                        setFieldValue('P16c.response[0].responseuser', updatedResponseUser);
+                                        if (text) {
+                                            filteredResponseUser.push(text);
+                                        }
+
+                                        setFieldValue('P16c.response[0].responseuser', filteredResponseUser);
                                         setFieldValue('P16c.response[0].additionalText', text);
                                     }}
                                     errors={errors.P16c?.response?.[0]}
                                     touched={touched.P16c?.response?.[0]}
                                 />
                                 <ErrorMessage errors={errors} touched={touched} fieldName="P16c" />
+
                                 {/* P16d */}
                                 <DoubleDropdownSubcat
-                                    questionTitle="P16.4. Discapacidad"
+                                    questionTitle="P16.4. Económicas"
                                     subcategoryTitle="Seleccione lo que aplica"
                                     subcategories={subcategories16d}
                                     selectedCategory={values.P16d.response[0].idoptresponse}
@@ -217,19 +222,23 @@ export const FormPage4 = () => {
                                         console.log(`P16d: Category changed to: ${value}`);
                                         setFieldValue('P16d.response[0].idoptresponse', value);
 
-                                        // Si el valor es "No", guardamos "No" en responseuser
                                         if (value === "no") {
                                             setFieldValue('P16d.response[0].responseuser', ["No"]);
                                         } else {
                                             setFieldValue('P16d.response[0].responseuser', []);
-                                            console.log(`P16d: Subcategories reset`);
                                         }
                                     }}
-                                    onSubcategoryChange={(subValues) => {
-                                        console.log(`P16d: Subcategories changed to:`, subValues);
+                                    onSubcategoryChange={(selectedValues) => {
+                                        console.log(`P16d: Subcategories changed to:`, selectedValues);
 
                                         const currentResponseUser = values.P16d.response[0].responseuser || [];
-                                        const updatedResponseUser = [...new Set([...currentResponseUser, ...subValues])]; // Evita duplicados
+                                        const updatedResponseUser = currentResponseUser.filter(item => selectedValues.includes(item));
+
+                                        selectedValues.forEach((subValue) => {
+                                            if (!updatedResponseUser.includes(subValue)) {
+                                                updatedResponseUser.push(subValue);
+                                            }
+                                        });
 
                                         setFieldValue('P16d.response[0].responseuser', updatedResponseUser);
                                     }}
@@ -237,20 +246,22 @@ export const FormPage4 = () => {
                                         console.log(`P16d: Additional text changed to: ${text}`);
 
                                         const currentResponseUser = values.P16d.response[0].responseuser || [];
-                                        const updatedResponseUser = [...new Set([...currentResponseUser.filter(sub => sub !== values.P16d.response[0].additionalText), text])]; // Actualizar texto sin duplicar
+                                        const filteredResponseUser = currentResponseUser.filter(item => item !== values.P16d.response[0].additionalText);
 
-                                        setFieldValue('P16d.response[0].responseuser', updatedResponseUser);
+                                        if (text) {
+                                            filteredResponseUser.push(text);
+                                        }
+
+                                        setFieldValue('P16d.response[0].responseuser', filteredResponseUser);
                                         setFieldValue('P16d.response[0].additionalText', text);
                                     }}
                                     errors={errors.P16d?.response?.[0]}
                                     touched={touched.P16d?.response?.[0]}
                                 />
+                                <ErrorMessage errors={errors} touched={touched} fieldName="P16d" />
 
-
-                                <View style={globalStyles.buttonsBanner}>
-                                    <Prevcomponent onPrevPressed={() => navigation.navigate('page3' as never)} />
-                                    <NextComponent onNextPress={handleSubmit} />
-                                </View>
+                                <Prevcomponent onPrevPressed={() => navigation.navigate('page3' as never)} />
+                                <NextComponent onNextPress={handleSubmit} />
                             </View>
                         );
                     }}
