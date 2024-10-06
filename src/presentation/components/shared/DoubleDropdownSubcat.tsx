@@ -42,7 +42,7 @@ export const DoubleDropdownSubcat = ({
     <View>
       <Text style={globalStyles.questionTitle}>{questionTitle}</Text>
 
-      <View style={globalStyles.picker}>
+      <View style={{ padding: 0, borderWidth: 1, borderColor: 'blue', borderRadius: 10 }}>
         <Picker
           selectedValue={selectedCategory}
           onValueChange={onCategoryChange}
@@ -65,7 +65,7 @@ export const DoubleDropdownSubcat = ({
                 value={selectedSubcategories.includes(subcategory.value)}
                 onValueChange={() => handleCheckboxChange(subcategory.value)}
               />
-              <Text>{subcategory.label}</Text>
+              <Text style={globalStyles.checkboxText}>{subcategory.label}</Text>
             </View>
           ))}
           {errors?.subcategory && touched?.subcategory && (
@@ -73,7 +73,7 @@ export const DoubleDropdownSubcat = ({
           )}
 
           {selectedSubcategories.includes(specificSubcategoryValue) && (
-            <View style={globalStyles.picker}>
+            <View>
               <TextInput
                 onChangeText={onTextChange}
                 placeholder="Especifica tu respuesta"

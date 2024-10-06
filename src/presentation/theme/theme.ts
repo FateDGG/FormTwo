@@ -96,13 +96,23 @@ export const globalStyles = StyleSheet.create({
     },
     picker:{
         borderRadius: 10,
-        backgroundColor: 'rgba(75, 251, 247, 0.37)',
+        // backgroundColor: 'rgba(75, 251, 247, 0.37)',
         marginBottom: 10,
+        padding: 0, 
+        borderWidth: 1, 
+        borderColor: 'blue',
     },
     checkboxContainer: {
-        flexDirection: 'row',   // Para que el CheckBox y el texto estén en fila
-        alignItems: 'center',   // Centra el checkbox verticalmente con el texto
-        marginVertical: 10,     // Espaciado vertical entre checkboxes
+        flexDirection: 'row',         // Para que el CheckBox y el texto estén en fila
+        alignItems: 'center',         // Centra el checkbox verticalmente con el texto
+        marginVertical: 10,           // Espaciado vertical entre checkboxes
+        flex: 1,                      // Permite que el contenedor ocupe el espacio disponible
       },
+      
+      checkboxText: {
+        flex: 1,                      // Permite que el texto ocupe el espacio disponible
+        marginLeft: 10,              // Espaciado entre el CheckBox y el texto
+        flexWrap: 'wrap',            // Permite que el texto se ajuste en varias líneas si es necesario
+      }      
 }
 )

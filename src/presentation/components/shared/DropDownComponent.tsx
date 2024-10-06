@@ -1,30 +1,54 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import React, { useState } from 'react';
+import { View, Text, Modal, TouchableOpacity, FlatList } from 'react-native';
 import { globalStyles } from '../../theme/theme';
 
 interface DropDownProps {
-  values: string[]; 
-  setFieldValue: (value: string) => void; 
+  values: string[];
+  setFieldValue: (value: string) => void;
   qTitle: string;
   opValues: string[];
 }
 
 export const DropDownComponent = ({ values, setFieldValue, qTitle, opValues }: DropDownProps) => {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedValue, setSelectedValue] = useState(values[0]);
+
+  const handleSelect = (value: string) => {
+    setSelectedValue(value);
+    setFieldValue(value);
+    setModalVisible(false);
+  };
+
   return (
     <View>
       <Text style={globalStyles.questionTitle}>{qTitle}</Text>
-      <View style={globalStyles.picker}>
-        <Picker
-          selectedValue={values[0]}  
-          onValueChange={(value) => setFieldValue(value)}  
-        >
-          <Picker.Item label="Seleccione una opción" value="" />
-          {opValues.map((option, index) => (
-            <Picker.Item label={option} value={option} key={index} />
-          ))}
-        </Picker>
-      </View>
+      <TouchableOpacity onPress={() => setModalVisible(true)} style={{ padding: 10, borderWidth: 1, borderColor: 'blue', borderRadius: 5 }}>
+        <Text>{selectedValue || "Seleccione una opción"}</Text>
+      </TouchableOpacity>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <View style={{ width: '80%', backgroundColor: 'white', borderRadius: 10, padding: 20 }}>
+            <FlatList
+              data={opValues}
+              keyExtractor={(item, index) => index.toString()}
+              renderItem={({ item }) => (
+                <TouchableOpacity onPress={() => handleSelect(item)} style={{ paddingVertical: 10 }}>
+                  <Text style={{ flexWrap: 'wrap' }}>{item}</Text>
+                </TouchableOpacity>
+              )}
+            />
+            <TouchableOpacity onPress={() => setModalVisible(false)} style={{ marginTop: 20 }}>
+              <Text style={{ textAlign: 'center', color: 'blue' }}>Cerrar</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };

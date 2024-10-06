@@ -1,6 +1,5 @@
-import React from 'react';
-import { View, Text, TextInput } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import React, { useState } from 'react';
+import { View, Text, TextInput, Modal, TouchableOpacity, FlatList } from 'react-native';
 import { globalStyles } from '../../theme/theme';
 
 interface DoubleDropdownInputProps {
@@ -26,44 +25,64 @@ export const DoubleDropdownInput = ({
   errors,
   touched,
 }: DoubleDropdownInputProps) => {
+  const [modalVisible, setModalVisible] = useState(false);
   const specificCategoryValue = '61'; // Cambia esto al valor específico que deseas
+
+  const handleCategorySelect = (value: string) => {
+    onCategoryChange(value);
+    setModalVisible(false);
+    if (value !== specificCategoryValue) {
+      onSubcategoryChange(''); // Resetea solo si no es "Otro"
+    }
+  };
 
   return (
     <View>
       <Text style={globalStyles.questionTitle}>{categoryTitle}</Text>
-      <View style={globalStyles.picker}>
-        <Picker
-          selectedValue={selectedCategory}
-          onValueChange={(value) => {
-            onCategoryChange(value);
-            if (value !== specificCategoryValue) {
-              onSubcategoryChange(''); // Resetea solo si no es "Otro"
-            }
-          }}
-        >
-          <Picker.Item label="Seleccione una opción" value="" />
-          {categories.map((category) => (
-            <Picker.Item key={category.value} label={category.label} value={category.value} />
-          ))}
-        </Picker>
-        {errors?.category && touched?.category && (
-          <Text style={{ color: 'red' }}>{errors.category}</Text>
-        )}
-      </View>
+      <TouchableOpacity onPress={() => setModalVisible(true)} style={{ padding: 10, borderWidth: 1, borderColor: 'blue', borderRadius: 5 }}>
+        <Text>{selectedCategory ? categories.find(cat => cat.value === selectedCategory)?.label : "Seleccione una opción"}</Text>
+      </TouchableOpacity>
+      {errors?.category && touched?.category && (
+        <Text style={{ color: 'red' }}>{errors.category}</Text>
+      )}
+
+      {/* Modal para seleccionar la categoría */}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.5)' }}>
+          <View style={{ width: '80%', backgroundColor: 'white', borderRadius: 10, padding: 20 }}>
+            <FlatList
+              data={categories}
+              keyExtractor={(item) => item.value}
+              renderItem={({ item }) => (
+                <TouchableOpacity onPress={() => handleCategorySelect(item.value)} style={{ paddingVertical: 10 }}>
+                  <Text>{item.label}</Text>
+                </TouchableOpacity>
+              )}
+            />
+            <TouchableOpacity onPress={() => setModalVisible(false)} style={{ marginTop: 20 }}>
+              <Text style={{ textAlign: 'center', color: 'blue' }}>Cerrar</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+
       {selectedCategory === specificCategoryValue && (
         <>
           <Text style={globalStyles.questionTitle}>{subcategoryTitle}</Text>
-          <View style={globalStyles.picker}>
-            <TextInput
-              value={selectedSubcategory}
-              onChangeText={(text) => onSubcategoryChange(text)}
-              placeholder="Especifica tu respuesta"
-              style={globalStyles.input}
-            />
-            {errors?.subcategory && touched?.subcategory && (
-              <Text style={{ color: 'red' }}>{errors.subcategory}</Text>
-            )}
-          </View>
+          <TextInput
+            value={selectedSubcategory}
+            onChangeText={(text) => onSubcategoryChange(text)}
+            placeholder="Especifica tu respuesta"
+            style={globalStyles.input}
+          />
+          {errors?.subcategory && touched?.subcategory && (
+            <Text style={{ color: 'red' }}>{errors.subcategory}</Text>
+          )}
         </>
       )}
     </View>
