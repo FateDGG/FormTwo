@@ -81,6 +81,7 @@ export const HomeScreen = () => {
   };
 
   return (
+
     <View style={globalStyles.HomeScreenContainer}>
       <Image
         style={styles.logo}

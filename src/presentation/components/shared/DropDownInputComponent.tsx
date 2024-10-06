@@ -54,7 +54,7 @@ export const DoubleDropdownInput = ({
         onRequestClose={() => setModalVisible(false)}
       >
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.5)' }}>
-          <View style={{ width: '80%', backgroundColor: 'white', borderRadius: 10, padding: 20 }}>
+          <View style={{ width: '80%', backgroundColor: 'white', borderRadius: 10, padding: 20, }}>
             <FlatList
               data={categories}
               keyExtractor={(item) => item.value}

@@ -18,8 +18,11 @@ export const globalStyles = StyleSheet.create({
         flexDirection: 'row',
         width: '100%',
         justifyContent: 'center',
+        alignItems: 'center', // Asegura que estén alineados verticalmente
         gap: 50,
+        flexWrap: 'nowrap', // Impide que los botones se muevan a una nueva línea
     },
+    
     CapTitle :{
         width: '100%',
         backgroundColor: globalColors.bluecolor,
