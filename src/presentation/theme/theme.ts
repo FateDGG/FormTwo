@@ -3,7 +3,8 @@ import { StyleSheet } from "react-native";
 export const globalColors = {
     background: '#ffff',
     primarybg: '#4A7E8F',
-    another:'#000000'
+    another:'#000000',
+    bluecolor:'#082464'
 }
 
 export const globalStyles = StyleSheet.create({
@@ -21,7 +22,7 @@ export const globalStyles = StyleSheet.create({
     },
     CapTitle :{
         width: '100%',
-        backgroundColor: globalColors.primarybg,
+        backgroundColor: globalColors.bluecolor,
         padding: 10,
         borderRadius: 20,
         textAlign: 'center',
@@ -46,7 +47,7 @@ export const globalStyles = StyleSheet.create({
     },
     fab:{
         color: 'black',
-        backgroundColor: 'blue',
+        backgroundColor: globalColors.bluecolor,
         width:55,
         margin:16,
         right:0,
@@ -58,7 +59,7 @@ export const globalStyles = StyleSheet.create({
         backgroundColor: globalColors.background,
     },
     PrimaryButton: {
-        backgroundColor: globalColors.primarybg,
+        backgroundColor: globalColors.bluecolor,
         borderRadius: 5,
         padding: 10,
         width: '70%',
@@ -88,8 +89,8 @@ export const globalStyles = StyleSheet.create({
         height: 50,
         marginBottom: 20,
         paddingLeft: 20,
-        backgroundColor: 'rgba(75, 251, 247, 0.37)',
-        color: 'black',
+        backgroundColor: globalColors.bluecolor,
+        color: 'white',
         borderRadius: 10,
         fontSize: 15,
         fontWeight: '700',
@@ -98,15 +99,15 @@ export const globalStyles = StyleSheet.create({
         borderRadius: 10,
         // backgroundColor: 'rgba(75, 251, 247, 0.37)',
         marginBottom: 10,
-        padding: 0, 
-        borderWidth: 1, 
-        borderColor: 'blue',
+        padding: 10, 
+        borderWidth: 3, 
+        borderColor: globalColors.bluecolor,
     },
     checkboxContainer: {
         flexDirection: 'row',         // Para que el CheckBox y el texto estén en fila
         alignItems: 'center',         // Centra el checkbox verticalmente con el texto
         marginVertical: 10,           // Espaciado vertical entre checkboxes
-        flex: 1,                      // Permite que el contenedor ocupe el espacio disponible
+        flex: 1,               
       },
       
       checkboxText: {

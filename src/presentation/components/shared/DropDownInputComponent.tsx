@@ -39,7 +39,7 @@ export const DoubleDropdownInput = ({
   return (
     <View>
       <Text style={globalStyles.questionTitle}>{categoryTitle}</Text>
-      <TouchableOpacity onPress={() => setModalVisible(true)} style={{ padding: 10, borderWidth: 1, borderColor: 'blue', borderRadius: 5 }}>
+      <TouchableOpacity onPress={() => setModalVisible(true)} style={globalStyles.picker}>
         <Text>{selectedCategory ? categories.find(cat => cat.value === selectedCategory)?.label : "Seleccione una opción"}</Text>
       </TouchableOpacity>
       {errors?.category && touched?.category && (
@@ -79,6 +79,7 @@ export const DoubleDropdownInput = ({
             onChangeText={(text) => onSubcategoryChange(text)}
             placeholder="Especifica tu respuesta"
             style={globalStyles.input}
+            placeholderTextColor='lightgray'
           />
           {errors?.subcategory && touched?.subcategory && (
             <Text style={{ color: 'red' }}>{errors.subcategory}</Text>

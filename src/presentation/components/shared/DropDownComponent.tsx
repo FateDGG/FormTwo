@@ -22,7 +22,7 @@ export const DropDownComponent = ({ values, setFieldValue, qTitle, opValues }: D
   return (
     <View>
       <Text style={globalStyles.questionTitle}>{qTitle}</Text>
-      <TouchableOpacity onPress={() => setModalVisible(true)} style={{ padding: 10, borderWidth: 1, borderColor: 'blue', borderRadius: 5 }}>
+      <TouchableOpacity onPress={() => setModalVisible(true)} style={globalStyles.picker}>
         <Text>{selectedValue || "Seleccione una opción"}</Text>
       </TouchableOpacity>
 

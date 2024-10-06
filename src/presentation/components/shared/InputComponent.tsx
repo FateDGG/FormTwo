@@ -24,7 +24,7 @@ export const InputComponent = ({ textTitle, info, handleBlur, handleChange, valu
         value={stringValue}  
         style={globalStyles.input}
         placeholder={info}
-        placeholderTextColor="#888"
+        placeholderTextColor="lightgray"
       />
     </View>
   )

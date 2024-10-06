@@ -42,7 +42,7 @@ export const DoubleDropdownSubcat = ({
     <View>
       <Text style={globalStyles.questionTitle}>{questionTitle}</Text>
 
-      <View style={{ padding: 0, borderWidth: 1, borderColor: 'blue', borderRadius: 10 }}>
+      <View style={globalStyles.picker}>
         <Picker
           selectedValue={selectedCategory}
           onValueChange={onCategoryChange}
@@ -78,6 +78,7 @@ export const DoubleDropdownSubcat = ({
                 onChangeText={onTextChange}
                 placeholder="Especifica tu respuesta"
                 style={globalStyles.input}
+                placeholderTextColor='lightgray'
               />
             </View>
           )}
