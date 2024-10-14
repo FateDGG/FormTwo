@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, Pressable } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
-import { useSurveyProcessor } from '../../../hooks/useSurveyProcessor';
+import { useSurveyProcessor } from '../../../hooks/UseSurveyProcessor';
 import { useNavigation } from '@react-navigation/native';
 
 interface JsonFile {
