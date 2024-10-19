@@ -58,6 +58,12 @@ export const getInitialValuesPage4 = () => {
         P16b: initialResponses("P16.2","3","","16"),
         P16c: initialResponses("P16.3","3","","16"),
         P16d: initialResponses("P16.4","3","","16"),
+    }
+
+    
+}
+export const getInitialValuesPage5 = () => {
+    return {
         P16e: initialResponses("P16.5","3","","16"),
         P16f: initialResponses("P16.6","3","","16"),
         P16g: initialResponses("P16.7","3","","16"),
@@ -75,16 +81,30 @@ export const getInitialValuesPage6 = () => {
         P18c: initialResponses("P18c","5","","18"),
         P18d: initialResponses("P18d","5","","18"),
         P18e: initialResponses("P18e","5","","18"),
+    }
+
+}
+export const getInitialValuesPage7 = () => {
+    return {
+
         P18f: initialResponses("P18f","5","","18"),
         P18g: initialResponses("P18g","5","","18"),
         P18h: initialResponses("P18h","5","","18"),
         P18i: initialResponses("P18i","5","","18"),
         P18j: initialResponses("P18j","5","","18"),
+       
+    }
+
+}
+export const getInitialValuesPage8 = () => {
+    return {
+
         P18k: initialResponses("P18k","5","","18"),
         P18l: initialResponses("P18l","5","","18"),
         P18m: initialResponses("P18m","5","","18"),
         P18n: initialResponses("P18n","5","","18"),
-        P18o: initialResponses("P18o","5","","18"),
+        P18o: initialResponses("P18o","5","","18")
+       
     }
 
 }
