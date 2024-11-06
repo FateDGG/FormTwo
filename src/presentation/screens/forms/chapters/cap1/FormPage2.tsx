@@ -18,6 +18,7 @@ import { fileName } from '../../../../../utils/generateFilename';
 import { validationSchemaPage2 } from '../../../../../utils/cap1/validationSchemas';
 import { ErrorMessage } from '../../../../components/shared/ErrorComponent';
 import { ErrorIdMessage } from '../../../../components/shared/ErrorIdComponent';
+import { NumericInputComponent } from '../../../../components/shared/NumericInputComponent';
 
 export interface FormValues {
   P7: FormTemplate;
@@ -83,7 +84,7 @@ export const FormPage2 = () => {
                 />
                 <ErrorMessage errors={errors} touched={touched} fieldName="P7" />
 
-                <InputComponent
+                <NumericInputComponent
                   info='P8'
                   textTitle='P8. Código municipio:'
                   handleChange={(value: string) => {
@@ -100,7 +101,7 @@ export const FormPage2 = () => {
 
                 <DoubleDropdownInput
                 categoryTitle="P9. ¿Qué Rol desempeña dentro de su comunidad?"
-                subcategoryTitle="Ingrese una subcategoría:"
+                subcategoryTitle="Ingresa según corresponda:"
                 categories={categories}
                 selectedCategory={values.P9.response[0].idoptresponse} // Asegúrate de que este valor sea correcto
                 selectedSubcategory={values.P9.response[0].responseuser[0]}

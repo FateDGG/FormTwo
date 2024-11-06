@@ -12,6 +12,7 @@ import { FormPage8 } from '../screens/forms/chapters/cap5/FormPage8';
 import { FormPage9 } from '../screens/forms/chapters/cap5/FormPage9';
 import { FormPage10 } from '../screens/forms/chapters/cap5/FormPage10';
 import { SurveyProcessor } from '../screens/forms/post/SurveyList';
+import { InstructionsPage } from '../screens/forms/chapters/cap1/Instrucciones';
 const Stack = createStackNavigator();
 
 export const AppNavigator = () => {
@@ -24,6 +25,7 @@ export const AppNavigator = () => {
       },
     }}>
       <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Instructions" component={InstructionsPage} />
       <Stack.Screen name="SurveyList" component={SurveyProcessor} />
       <Stack.Screen name="page1" component={FormPage1} />
       <Stack.Screen name="page2" component={FormPage2} />

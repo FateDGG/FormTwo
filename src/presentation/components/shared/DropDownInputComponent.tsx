@@ -54,7 +54,7 @@ export const DoubleDropdownInput = ({
         onRequestClose={() => setModalVisible(false)}
       >
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.5)' }}>
-          <View style={{ width: '80%', backgroundColor: 'white', borderRadius: 10, padding: 20, }}>
+          <View style={{ width: '80%', backgroundColor: 'white', borderRadius: 10, padding: 20 }}>
             <FlatList
               data={categories}
               keyExtractor={(item) => item.value}
@@ -76,7 +76,11 @@ export const DoubleDropdownInput = ({
           <Text style={globalStyles.questionTitle}>{subcategoryTitle}</Text>
           <TextInput
             value={selectedSubcategory}
-            onChangeText={(text) => onSubcategoryChange(text)}
+            onChangeText={(text) => {
+              // Filtra cualquier carácter numérico
+              const filteredText = text.replace(/[0-9]/g, ''); 
+              onSubcategoryChange(filteredText);
+            }}
             placeholder="Especifica tu respuesta"
             style={globalStyles.input}
             placeholderTextColor='lightgray'

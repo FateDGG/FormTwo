@@ -38,7 +38,7 @@ export const HomeScreen = () => {
     setSurveyId(newSurveyId);
     console.log("Generated Survey ID:", newSurveyId);
     await postNewSurvey(`${fileName}.json`, newSurveyId);
-    navigation.navigate('page1' as never);
+    navigation.navigate('Instructions' as never);
   };
 
   return (

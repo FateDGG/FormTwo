@@ -5,12 +5,12 @@ import { globalStyles } from '../../theme/theme';
 interface Props {
   textTitle: string;
   info: string;
-  handleChange: (value: string) => void;  // Cambié aquí para que solo acepte el valor del input
-  handleBlur: () => void;  // handleBlur no necesita un argumento aquí
+  handleChange: (value: string) => void;
+  handleBlur: () => void;
   values: string | string[] | undefined;
 }
 
-export const InputComponent = ({ textTitle, info, handleBlur, handleChange, values }: Props) => {
+export const NumericInputComponent = ({ textTitle, info, handleBlur, handleChange, values }: Props) => {
 
   const stringValue = Array.isArray(values) ? values[0] || '' : values || '';
   
@@ -18,16 +18,17 @@ export const InputComponent = ({ textTitle, info, handleBlur, handleChange, valu
     <View>
       <Text style={globalStyles.questionTitle}>{textTitle}</Text>
       <TextInput
-        onChangeText={(value) => {
-          // Filtra números y solo deja letras y otros caracteres permitidos
-          const onlyLetters = value.replace(/[0-9]/g, '');
-          handleChange(onlyLetters);
+        onChangeText={(text) => {
+          // Filtra cualquier carácter que no sea número
+          const onlyNumbers = text.replace(/[^0-9]/g, '');
+          handleChange(onlyNumbers);
         }}
-        onBlur={handleBlur}
-        value={stringValue}
+        onBlur={handleBlur} 
+        value={stringValue}  
         style={globalStyles.input}
         placeholder={info}
         placeholderTextColor="lightgray"
+        keyboardType="numeric"
       />
     </View>
   );

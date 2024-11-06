@@ -5,12 +5,12 @@ import { globalStyles } from '../../theme/theme';
 interface Props {
   textTitle: string;
   info: string;
-  handleChange: (value: string) => void;  // Cambié aquí para que solo acepte el valor del input
-  handleBlur: () => void;  // handleBlur no necesita un argumento aquí
+  handleChange: (value: string) => void;
+  handleBlur: () => void;
   values: string | string[] | undefined;
 }
 
-export const InputComponent = ({ textTitle, info, handleBlur, handleChange, values }: Props) => {
+export const EmailInputComponent = ({ textTitle, info, handleBlur, handleChange, values }: Props) => {
 
   const stringValue = Array.isArray(values) ? values[0] || '' : values || '';
   
@@ -19,9 +19,9 @@ export const InputComponent = ({ textTitle, info, handleBlur, handleChange, valu
       <Text style={globalStyles.questionTitle}>{textTitle}</Text>
       <TextInput
         onChangeText={(value) => {
-          // Filtra números y solo deja letras y otros caracteres permitidos
-          const onlyLetters = value.replace(/[0-9]/g, '');
-          handleChange(onlyLetters);
+          // Filtra los espacios y solo deja los caracteres permitidos
+          const noSpaces = value.replace(/\s/g, '');
+          handleChange(noSpaces);
         }}
         onBlur={handleBlur}
         value={stringValue}

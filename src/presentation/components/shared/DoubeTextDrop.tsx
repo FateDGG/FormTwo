@@ -30,6 +30,18 @@ export const YesNoInput = ({
   errors,
   touched,
 }: YesNoInputProps) => {
+
+  // Función para eliminar números del texto
+  const handleAnswer1Change = (text: string) => {
+    const filteredText = text.replace(/[0-9]/g, ''); // Elimina los números
+    onAnswer1Change(filteredText);
+  };
+
+  const handleAnswer2Change = (text: string) => {
+    const filteredText = text.replace(/[0-9]/g, ''); // Elimina los números
+    onAnswer2Change(filteredText);
+  };
+
   return (
     <View>
       <Text style={globalStyles.questionTitle}>{questionTitle}</Text>
@@ -51,7 +63,7 @@ export const YesNoInput = ({
           <Text style={globalStyles.questionTitle}>{subQuestion1}</Text>
           <TextInput
             value={answer1}
-            onChangeText={onAnswer1Change}
+            onChangeText={handleAnswer1Change} // Usamos la función modificada
             placeholder="P25"
             style={globalStyles.input}
             placeholderTextColor='lightgray'
@@ -63,7 +75,7 @@ export const YesNoInput = ({
           <Text style={globalStyles.questionTitle}>{subQuestion2}</Text>
           <TextInput
             value={answer2}
-            onChangeText={onAnswer2Change}
+            onChangeText={handleAnswer2Change} // Usamos la función modificada
             placeholder="P26"
             style={globalStyles.input}
             placeholderTextColor='lightgray'
