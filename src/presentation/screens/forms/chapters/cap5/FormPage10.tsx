@@ -58,6 +58,9 @@ export const FormPage10 = () => {
                 <View style={globalStyles.CapTitle}>
                     <Text style={globalStyles.Title}>Información del Encuestador</Text>
                 </View>
+                <View>
+                    <Text style={{ color: '#f89d30', fontWeight: 'bold'}}>El objetivo de esta sección es obtener el nombre del encuestador y aspectos de fecha, hora y novedad derivada de la aplicación de la encuesta.</Text>
+                </View>
 
                 <Formik
                     initialValues={initialValues}

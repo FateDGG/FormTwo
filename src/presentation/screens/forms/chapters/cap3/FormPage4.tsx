@@ -39,6 +39,9 @@ export const FormPage4 = () => {
                 <View style={globalStyles.CapTitle}>
                     <Text style={globalStyles.Title}>Capítulo 3. Barreras de acceso a la justicia</Text>
                 </View>
+                <View>
+                    <Text style={{ color: '#f89d30', fontWeight: 'bold'}}>El objetivo de este capítulo es la identificación de las barreras de acceso a la justicia en el territorio.</Text>
+                </View>
 
                 <Formik
                     initialValues={initialValues}

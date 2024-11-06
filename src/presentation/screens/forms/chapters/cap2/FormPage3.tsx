@@ -41,6 +41,9 @@ export const FormPage3 = () => {
         <View style={globalStyles.CapTitle}>
           <Text style={globalStyles.Title}>Capítulo 2. Información De la Comunidad</Text>
         </View>
+        <View>
+          <Text style={{ color: '#f89d30', fontWeight: 'bold'}}>El objetivo de este capítulo es conocer las características generales de la comunidad.</Text>
+        </View>
 
         <Formik
           initialValues={initialValues}

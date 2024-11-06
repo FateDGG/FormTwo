@@ -42,6 +42,9 @@ export const FormPage1 = () => {
         <View style={globalStyles.CapTitle}>
           <Text style={globalStyles.Title}>Capítulo 1.  Características sociodemográficas del encuestado</Text>
         </View>
+        <View>
+          <Text style={{ color: '#f89d30', fontWeight: 'bold'}}>El objetivo de este capítulo es obtener información sobre los aspectos sociodemográficos</Text>
+        </View>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchemaPage1}
